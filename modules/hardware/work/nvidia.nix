@@ -25,12 +25,19 @@ in
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.production;
       prime = {
-        offload.enable = true;
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:45:0:0";
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        amdgpuBusId = "PCI:5:0:0";
+        nvidiaBusId = "PCI:1:0:0";
       };
       modesetting.enable = true;
-      powerManagement.enable = true;
+      #      powerManagement.enable = true;
+      # Fine-grained power management. Turns off GPU when not in use.
+      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+      # Only enable it if offload is enabled
+      powerManagement.finegrained = true;
     };
   };
 }

@@ -49,9 +49,9 @@ in
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
   };
 
-  time.timeZone = "Europe/Brussels";
+  time.timeZone = "America/Toronto";
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = "en_CA.UTF-8";
     extraLocaleSettings = {
       LC_MONETARY = "nl_BE.UTF-8";
     };
@@ -59,7 +59,7 @@ in
 
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "us";
+    keyMap = "dvorak";
   };
 
   security = {
