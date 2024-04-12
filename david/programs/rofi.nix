@@ -42,8 +42,8 @@ in
             y-offset = mkLiteral "34px";
 
             background-color = mkLiteral "@bg0";
+            border-color = mkLiteral "#f7870a";
             border = mkLiteral "1px";
-            border-color = mkLiteral "@bg1";
             border-radius = mkLiteral "6px";
           };
 
