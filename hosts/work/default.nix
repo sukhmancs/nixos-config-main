@@ -22,7 +22,9 @@
 {
   imports = [ ./hardware-configuration.nix ] ++
     (import ../../modules/desktops/virtualisation) ++
-    (import ../../modules/hardware/work);
+    (import ../../modules/hardware/work) ++
+    (import ../../david/programs) ++
+    (import ../../david/services);
 
   boot = {
     loader = {

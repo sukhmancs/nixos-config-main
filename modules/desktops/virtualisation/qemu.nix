@@ -45,6 +45,15 @@
     gvfs.enable = true;
   };
 
+  home-manager.users.${vars.user} = {
+    dconf.settings = {
+      "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+      };
+    };
+  };
+
   # GPU Passthrough w/ vendor reset
   # boot = {
   #   kernelParams = [ "intel_iommu=on" "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ]; # or amd_iommu (cpu)

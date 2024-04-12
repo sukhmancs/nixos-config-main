@@ -1,0 +1,6 @@
+#
+# This file is a todo list for my nixos setup.
+#
+
+- uncomment and setup vastai_certificates.nix.
+- uncomment and setup firewall.nix.

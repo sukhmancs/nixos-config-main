@@ -277,12 +277,12 @@ with host;
               ];
             };
             input = {
-              kb_layout = "us";
-              # kb_layout=us,us
-              # kb_variant=,dvorak
+              # kb_layout = "us";
+              kb_layout="us,us";
+              kb_variant="dvorak,";
               # kb_options=caps:ctrl_modifier
-              kb_options = "caps:escape";
-              follow_mouse = 2;
+              kb_options = "grp:alt_space_toggle";
+              follow_mouse = 1;
               repeat_delay = 250;
               numlock_by_default = 1;
               accel_profile = "flat";

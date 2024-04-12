@@ -1,0 +1,12 @@
+#
+# This file contains all the direct changes that I
+# have made to the forked repository.
+#
+
+- changed nixos-config/modules/hardware/[host]/nvidia.nix - updated amdbusid, nvidiabusid.
+- changed flake.nix - updated username.
+- changed configuration.nix - updated locale.
+- changed hyprland.nix - updated keyboard layout.
+- changed git.nix file - added lfs, git-helper.
+- changed qemu.nix file - added automatic reconnect (line 48 - line 55).
+- added `david/programs`, `david/services` to `hosts/work/default.nix`.
