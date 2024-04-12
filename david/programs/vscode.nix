@@ -4,20 +4,20 @@
 #
 { config, lib, pkgs, vars, ... }:
 
-{  
+{
   home-manager.users.${vars.user} = {
     programs.vscode = {
       enable = true;
-      package = 
+      package =
       (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
         src = (builtins.fetchTarball {
           url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-          sha256 = "1shrpliy259zbm7xag6fijxsr2knc81rsaifqprh2zmmlg9ksqkq"; # In the first build, an error might occur if the SHA256 value changes. Check the error message for the new SHA256 value and update it accordingly. 
+          sha256 = "15ili2kmhpbbks2mba73w7pv0ba41wq45qbn4waxjx78r38kb74y"; # In the first build, an error might occur if the SHA256 value changes. Check the error message for the new SHA256 value and update it accordingly.
         });
         version = "latest";
-        
+
         buildInputs = oldAttrs.buildInputs ++ [ pkgs.krb5 ];
-      }); 
+      });
       extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
       vscodevim.vim
@@ -54,6 +54,6 @@
           when = "editorTextFocus && isWorkspaceTrusted && jupyter.ownsSelection && !findInputFocussed && !notebookEditorFocused && !replaceInputFocussed && editorLangId == 'python'";
         }
       ];
-    };   
+    };
   };
 }
