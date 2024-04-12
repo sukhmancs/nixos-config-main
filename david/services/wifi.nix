@@ -11,7 +11,7 @@
     dhcpcd.extraConfig = "nohook resolv.conf";
     # If using NetworkManager:
     networkmanager.enable = true;
-    networkmanager.dns = "none"; 
+    networkmanager.dns = "none";
   };
 
   programs = {
@@ -52,7 +52,7 @@
       # Whitelisting some subnets:
       "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16" "10.0.0.248/24" "2607:fea8:ab62:4200::635f/128"
     ];
-    bantime = "1h"; # Set bantime to one day 
+    bantime = "1h"; # Set bantime to one day
     jails = {
       apache-nohome-iptables = ''
         # Block an IP address if it accesses a non-existent

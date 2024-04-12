@@ -4,20 +4,8 @@
 
 { config, pkgs, vars, lib, ... }:
 
-with lib;
 {
-  options.opensnitch = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = mdDoc ''
-        Configurable inbound and outbound firewall
-      '';
-    };
-  };
-
-  config = mkIf config.opensnitch.enable {
-    services.opensnitch = {
+      services.opensnitch = {
       enable = true;
       rules = {
         systemd-timesyncd = {
@@ -46,10 +34,9 @@ with lib;
         };
       };
     };
-  
-  
+
+
     home-manager.users.${vars.user} = {
       services.opensnitch-ui.enable = true;
-    };    
-  };
+    };
 }
