@@ -10,6 +10,7 @@
   ./pcloud.nix
   ./gnupg.nix
   ./pass.nix
+  ./rofi.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]

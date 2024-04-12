@@ -2,7 +2,7 @@
 # pcloud fix
 #
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
@@ -17,29 +17,16 @@ let
     nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [ patchelfFixes ];
   });
 in
-with lib;
 {
-  options.pcloud = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = mdDoc ''
-        PCloud Storage.
-      '';
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = [
+    pcloudFixes
+  ];
 
-  config = mkIf config.pcloud.enable {
-    nixpkgs.config.allowUnfree = true;
-    environment.systemPackages = [
-      pcloudFixes
-    ];
-  
-    systemd.user.services.pcloud = {
-      description = "PCloud Storage";
-      wantedBy = [ "graphical-session.target" ];
-      partOf = [ "graphical-session.target" ];
-      serviceConfig.ExecStart = "/run/current-system/sw/bin/pcloud";
-    };    
+  systemd.user.services.pcloud = {
+    description = "PCloud Storage";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    serviceConfig.ExecStart = "/run/current-system/sw/bin/pcloud";
   };
 }
