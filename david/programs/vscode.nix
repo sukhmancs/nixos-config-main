@@ -38,6 +38,7 @@
         "security.workspace.trust.untrustedFiles" = "open"; # trust all files
         "terminal.integrated.defaultProfile.linux" = "zsh"; # set zsh the default shell for vscode terminals
         "editor.indentSize" = "2"; # default indentation size
+        "editor.minimap.enabled" = false; # disable minimap
         "github.copilot.enable" = { # enable copilot for markdown, plaintext files
           "markdown" = "true";
           "plaintext" = "true";

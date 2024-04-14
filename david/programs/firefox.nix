@@ -1,12 +1,12 @@
 #
 # Firefox with custom policies. Visit this Url for more info: https://mozilla.github.io/policy-templates/#blockaboutconfig
 # Some options:
-#   "Locked" means that the user can not change that value using FireFox UI. 
+#   "Locked" means that the user can not change that value using FireFox UI.
 #
 
 { config, lib, pkgs, vars, ... }:
 
-{  
+{
   programs.firefox = {
     enable = true;
     policies = {
@@ -39,8 +39,8 @@
         BehaviorPrivateBrowsing = "reject";
       };
       OfferToSaveLoginsDefault = false;                 # Disable save Logins
-      PictureInPicture = {                              # Disable picture in picture
-        Enabled = false;
+      PictureInPicture = {                              # Enable/Disable picture in picture
+        Enabled = true;
         Locked = true;
       };
       FirefoxHome = {                                   # Custom FireFox Home
@@ -139,7 +139,7 @@
           Block = ["file://*/*"];
           #Exceptions = ["http://example.org/*"];
       };
-      DNSOverHTTPS = { # Disable DNS queries over https because I am using dnscryptproxy on system. 
+      DNSOverHTTPS = { # Disable DNS queries over https because I am using dnscryptproxy on system.
         Enabled = false;
         Locked = true;
       };
@@ -149,8 +149,8 @@
       };
       ExtensionSettings = {
         "*" = { # Default configuration for all other extensions (i.e Block installation of all other extensions)
-          blocked_install_message = 
-          "You do not have permissions to install extensions. 
+          blocked_install_message =
+          "You do not have permissions to install extensions.
           Please change the FireFox policy in your NixOS configurations.";
           installation_mode = "blocked";
           allowed_types = ["extension"];
@@ -226,5 +226,5 @@
         };
       };
     };
-  };  
+  };
 }
