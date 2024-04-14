@@ -29,15 +29,16 @@
       mkhl.direnv
       ];
       userSettings = {
-        "files.autoSave" = "on";
-        "explorer.compactFolders" = false;
-        "update.showReleaseNotes" = false;
+        "files.autoSave" = "on"; # autosave
+        "explorer.compactFolders" = false; # disable compact mode
+        "update.showReleaseNotes" = false; # disable update release notes
         "explorer.confirmDragAndDrop" = false;
         "workbench.startupEditor" = "none";
         "update.mode" = "none";
-        "security.workspace.trust.untrustedFiles" = "open";
-        "terminal.integrated.defaultProfile.linux" = "zsh";
-        "github.copilot.enable" = {
+        "security.workspace.trust.untrustedFiles" = "open"; # trust all files
+        "terminal.integrated.defaultProfile.linux" = "zsh"; # set zsh the default shell for vscode terminals
+        "editor.indentSize" = "2"; # default indentation size
+        "github.copilot.enable" = { # enable copilot for markdown, plaintext files
           "markdown" = "true";
           "plaintext" = "true";
         };
