@@ -33,7 +33,7 @@ in
         nvidiaBusId = "PCI:1:0:0";
       };
       modesetting.enable = true;
-      #      powerManagement.enable = true;
+      powerManagement.enable = true;
       # Fine-grained power management. Turns off GPU when not in use.
       # Experimental and only works on modern Nvidia GPUs (Turing or newer).
       # Only enable it if offload is enabled
