@@ -27,6 +27,4 @@
     vulnix # NixOS vulnerability scanner
     lynis # Security auditing tool
   ];
-
-  virtualisation.waydroid.enable = true; # boot a full Android system on linux
 }
