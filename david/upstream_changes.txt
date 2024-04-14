@@ -11,3 +11,5 @@
 - changed qemu.nix file - added automatic reconnect (line 48 - line 55).
 - added `david/programs`, `david/services` to `hosts/work/default.nix`.
 - added `CTRL,space` keybinding to hyprland.nix (line 374) - it launches rofi-pass-wayland
+- added github copilot plugin - modules/editors/nvim.nix
+
