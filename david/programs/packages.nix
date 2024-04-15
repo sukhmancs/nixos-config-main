@@ -20,7 +20,7 @@
     glib # C library
     easyeffects # Limiter, compressor, equalizer, auto valume for pipewire applications
     taisei # taisei project game
-    rofi-pass-wayland # rofi-pass replacement for wayland
+    # rofi-pass-wayland # rofi-pass replacement for wayland
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
