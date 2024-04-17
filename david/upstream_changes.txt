@@ -12,4 +12,5 @@
 - added `david/programs`, `david/services` to `hosts/work/default.nix`.
 - added `CTRL,space` keybinding to hyprland.nix (line 374) - it launches rofi-pass-wayland
 - added github copilot plugin - modules/editors/nvim.nix
+- disabled nvidia via commenting out nvidia.nix file in modules/hardware/work/default.nix
 
