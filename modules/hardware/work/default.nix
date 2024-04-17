@@ -14,6 +14,6 @@
 
 [
   # ./intel.nix
-  # ./nvidia.nix
+  ./nvidia.nix
   ./wpa.nix
 ]
