@@ -286,8 +286,8 @@ with host;
             };
             input = {
               # kb_layout = "us";
-              kb_layout="us,us";
-              kb_variant="dvorak,";
+              kb_layout = "us,us";
+              kb_variant = "dvorak,";
               # kb_options=caps:ctrl_modifier
               kb_options = "grp:alt_space_toggle";
               follow_mouse = 1;
@@ -309,7 +309,7 @@ with host;
                 workspace_swipe_fingers = 3;
                 workspace_swipe_distance = 100;
                 workspace_swipe_create_new = true;
-                workspace_swipe_numbered = true;
+                # workspace_swipe_numbered = true;
               } else { };
 
             dwindle = {
