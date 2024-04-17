@@ -20,6 +20,8 @@
     };
   };
 
+  # networking.firewall.enable = false;
+
   # Setup DNS proxy client
   services.dnscrypt-proxy2 = {
     enable = true;
@@ -50,7 +52,11 @@
     maxretry = 5; # Observe 5 violations before banning an IP
     ignoreIP = [
       # Whitelisting some subnets:
-      "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16" "10.0.0.248/24" "2607:fea8:ab62:4200::635f/128"
+      "10.0.0.0/8"
+      "172.16.0.0/12"
+      "192.168.0.0/16"
+      "10.0.0.248/24"
+      "2607:fea8:ab62:4200::635f/128"
     ];
     bantime = "1h"; # Set bantime to one day
     jails = {
