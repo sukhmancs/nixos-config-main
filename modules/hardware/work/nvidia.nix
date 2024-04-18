@@ -30,7 +30,8 @@ in
         nvidiaBusId = "PCI:1:0:0";
       };
       modesetting.enable = true;
-      powerManagement.enable = true;
+      # powerManagement.enable = true;
+      powerManagement.finegrained = true;
     };
   };
 }

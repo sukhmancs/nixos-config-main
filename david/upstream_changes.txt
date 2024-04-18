@@ -3,7 +3,7 @@
 # have made to the forked repository.
 #
 
-- changed nixos-config/modules/hardware/[host]/nvidia.nix - updated amdbusid, nvidiabusid.
+- changed nixos-config/modules/hardware/[host]/nvidia.nix - updated amdbusid, nvidiabusid, powermanagement.
 - changed flake.nix - updated username.
 - changed configuration.nix - updated locale.
 - changed hyprland.nix - updated keyboard layout.
