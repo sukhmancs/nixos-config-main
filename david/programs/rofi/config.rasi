@@ -25,11 +25,11 @@ window {
     location:       center;
     width:          1000;
     height:         600;
-    border-radius:  24px;
+    border-radius:  6px;
 
-    border-color:    #b95cb9;
-    border:             3px;
-    background-color:   rgba(30, 30, 62, 60%);
+    border-color:    #f7870a;
+    border:             1px;
+    background-color:   #282c34;
     x-offset: 8px;
     y-offset: -70px;
 }
@@ -43,7 +43,7 @@ mainbox {
 imagebox {
     padding:                     2px;
     background-color:            transparent;
-    background-image:            url("~/nixos-config/david/programs/rofi/pokemon.png", height);
+    background-image:            url("~/.config/rofi/pokemon.png", height);
     orientation:                 horizontal;
 }
 
@@ -56,11 +56,11 @@ listbox {
 }
 
 inputbar {
-    background-color:  rgba(30, 30, 62, 60%);
-    border-color:      #b95cb9;
+    background-color:  #282c34;
+    border-color:      #f7870a;
 
-    border:         4px;
-    border-radius:  16px;
+    border:         1px;
+    border-radius:  6px;
 
     padding:    8px 16px;
     spacing:    8px;
@@ -68,7 +68,7 @@ inputbar {
 }
 
 prompt {
-    text-color: #ebdbb3;
+    text-color: #abb2bf;
 }
 
 entry {
@@ -108,7 +108,7 @@ element normal active {
 }
 
 element selected normal, element selected active {
-    background-image:    linear-gradient(45, #b95cb9d9, #4774bfd9);
+    background-image:    linear-gradient(45, #f7870a, #4774bfd9);
 }
 
 element-icon {
