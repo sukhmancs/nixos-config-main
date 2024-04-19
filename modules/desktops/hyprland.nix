@@ -317,7 +317,7 @@ with host;
                 workspace_swipe_fingers = 3;
                 workspace_swipe_distance = 100;
                 workspace_swipe_create_new = true;
-                workspace_swipe_numbered = true;
+                # workspace_swipe_numbered = true;
               } else { };
 
             dwindle = {

@@ -12,6 +12,7 @@
   ./pass.nix
   ./rofi.nix
   ./neofetch.nix
+  ./kitty.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]
