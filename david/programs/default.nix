@@ -11,6 +11,7 @@
   ./gnupg.nix
   ./pass.nix
   ./rofi.nix
+  ./neofetch.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]

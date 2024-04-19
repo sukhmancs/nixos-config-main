@@ -14,7 +14,7 @@ icon-theme: "Gruvminimal";
     font:   "SF Pro Display Bold 18";
 
     background-color:   transparent;
-    text-color:         #ebdbb3;
+    text-color:         #f7870a;
 
     margin:     0px;
     padding:    0px;

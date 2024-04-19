@@ -17,9 +17,11 @@
     xwinwrap
     mailutils
     tesseract4
+    virtiofsd # for qemu
     glib # C library
     easyeffects # Limiter, compressor, equalizer, auto valume for pipewire applications
     taisei # taisei project game
+    rofi
     # rofi-pass-wayland # rofi-pass replacement for wayland
 
     #### System hardening
