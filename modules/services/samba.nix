@@ -11,7 +11,7 @@
       shares = {
         # Set Password: $ smbpasswd -a <user>
         share = {
-          "path" = "/home/${vars.user}";
+          "path" = "/home/${vars.user}/share";
           "guest ok" = "yes";
           "read only" = "no";
         };
