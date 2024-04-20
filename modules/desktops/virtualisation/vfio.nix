@@ -7,12 +7,14 @@
 , options
 , lib
 , pkgs
-, ... }:
+, ...
+}:
 
 let
   cfg = config.vfio;
   enableIvshmem = cfg.lookingGlass.enable && (builtins.length cfg.lookingGlass.ivshmem) > 0;
-in {
+in
+{
   options.vfio = with lib; {
     enable = mkOption {
       type = types.bool;
@@ -67,10 +69,11 @@ in {
                 };
               };
             });
-            default = if builtins.length cfg.libvirtdGroup == 1 then [
-              { owner = builtins.head cfg.libvirtdGroup; }
-            ] else [ ];
-            example = [ { size = 32; owner = "user"; } ];
+            default =
+              if builtins.length cfg.libvirtdGroup == 1 then [
+                { owner = builtins.head cfg.libvirtdGroup; }
+              ] else [ ];
+            example = [{ size = 32; owner = "user"; }];
             description = "IVSHMEM/kvmfr config (multiple devices can be created: /dev/kvmfr0, /dev/kvmfr1, and so on)";
           };
         };
@@ -133,12 +136,12 @@ in {
       extraModulePackages =
         lib.mkIf enableIvshmem [ ((pkgs.kvmfrOverlay or lib.id) config.boot.kernelPackages.kvmfr) ];
       extraModprobeConfig = ''
-          options vfio-pci ids=${builtins.concatStringsSep "," cfg.pciIDs} disable_idle_d3=1
-          options kvm ignore_msrs=1
-          ${lib.optionalString enableIvshmem ''
-          options kvmfr static_size_mb=${builtins.concatStringsSep "," (map (x: toString x.size) cfg.lookingGlass.ivshmem)}
-          ''}
-        '';
+        options vfio-pci ids=${builtins.concatStringsSep "," cfg.pciIDs} disable_idle_d3=1
+        options kvm ignore_msrs=1
+        ${lib.optionalString enableIvshmem ''
+        options kvmfr static_size_mb=${builtins.concatStringsSep "," (map (x: toString x.size) cfg.lookingGlass.ivshmem)}
+        ''}
+      '';
       kernelParams = [
         (if cfg.intelCpu then "intel_iommu=on" else "amd_iommu=on")
         "iommu=pt"
@@ -190,16 +193,16 @@ in {
     };
     virtualisation.spiceUSBRedirection.enable = true;
     users.groups.libvirtd.members = [ "root" ] ++ cfg.libvirtdGroup;
-    environment.systemPackages = with pkgs; [ 
+    environment.systemPackages = with pkgs; [
       virtiofsd
       looking-glass-client # For KVM
-      virt-manager    # VM Interface
-      virt-viewer     # Remote VM
-      qemu            # Virtualizer
-      OVMF            # UEFI Firmware
-      gvfs            # Shared Directory
-      swtpm           # TPM
-      virglrenderer   # Virtual OpenGL
+      virt-manager # VM Interface
+      virt-viewer # Remote VM
+      qemu # Virtualizer
+      OVMF # UEFI Firmware
+      gvfs # Shared Directory
+      swtpm # TPM
+      virglrenderer # Virtual OpenGL
     ];
   };
 }
