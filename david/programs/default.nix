@@ -13,6 +13,7 @@
   ./rofi.nix
   ./neofetch.nix
   ./kitty.nix
+  ./betterdiscord.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]
