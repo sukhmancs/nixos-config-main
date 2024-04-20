@@ -14,6 +14,7 @@
   ./neofetch.nix
   ./kitty.nix
   ./betterdiscord.nix
+  ./zsh.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]
