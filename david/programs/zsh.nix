@@ -25,14 +25,6 @@
           plugins = [ "git" ];
         };
         initExtra = ''
-          # Spaceship
-          # source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
-          # autoload -U promptinit; promptinit
-          # Hook direnv
-          #emulate zsh -c "$(direnv hook zsh)"
-
-          #eval "$(direnv hook zsh)"
-
           #For Displaying gif in kitty terminal
           kitten icat --align left $HOME/.config/kitty/kitty.gif
         '';
