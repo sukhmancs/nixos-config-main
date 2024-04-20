@@ -43,7 +43,7 @@
           pname = "Grub-Themes";
           version = "3.1";
           src = pkgs.fetchFromGitHub {
-            owner = "MrVivekRajan";
+            owner = "sukhmancs";
             repo = "Grub-Themes";
             rev = "9e9826a4151f66848ffa7df4f92b74be45e1921b";
             hash = "sha256-buRtbDBd6x8PmVyK7tHcj5KhJW91YDQ1B5haQEhLiZU=";
