@@ -23,11 +23,25 @@
     taisei # taisei project game
     rofi # application launcher
     discord # discussion / chat app
+    betterdiscordctl # discord customizer
     # rofi-pass-wayland # rofi-pass replacement for wayland
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
     vulnix # NixOS vulnerability scanner
     lynis # Security auditing tool
+  ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      discord = prev.discord.overrideAttrs (
+        _: {
+          src = builtins.fetchTarball {
+            url = "https://discord.com/api/download?platform=linux&format=tar.gz";
+            sha256 = "0hvgzn8zfg6wqhsjcg9icd9y7vcd5h4ffckmc0ga51iv6ic35nyz";
+          };
+        }
+      );
+    })
   ];
 }

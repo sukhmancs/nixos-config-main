@@ -5,11 +5,11 @@
 { config, pkgs, vars, ... }:
 
 {
-  boot.extraModprobeConfig = ''
-    options kvm_intel nested=1
-    options kvm_intel emulate_invalid_guest_state=0
-    options kvm ignore_nsrs=1
-  ''; # For OSX-KVM
+  # boot.extraModprobeConfig = ''
+  #   options kvm_intel nested=1
+  #   options kvm_intel emulate_invalid_guest_state=0
+  #   options kvm ignore_nsrs=1
+  # ''; # For OSX-KVM
 
   users.groups = {
     libvirtd.members = [ "root" "${vars.user}" ];
@@ -48,37 +48,37 @@
   home-manager.users.${vars.user} = {
     dconf.settings = {
       "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
       };
     };
   };
 
   # GPU Passthrough w/ vendor reset
-  # boot = {
-  #   kernelParams = [ "intel_iommu=on" "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ]; # or amd_iommu (cpu)
-  #   kernelModules = [ "vendor-reset" "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ];
-  #   extraModulePackages = [ config.boot.kernelPackages.vendor-reset ]; # Presumably fix for GPU Reset Bug
-  #   extraModprobeConfig = "options vfio-pci ids=1002:67DF,1002:AAF0"; # grep PCI_ID /sys/bus/pci/devices/*/uevent
-  #   kernelPatches = [
-  #     {
-  #       name = "vendor-reset-reqs-and-other-stuff";
-  #       patch = null;
-  #       extraConfig = ''
-  #         FTRACE y
-  #         KPROBES y
-  #         FUNCTION_TRACER y
-  #         HWLAT_TRACER y
-  #         TIMERLAT_TRACER y
-  #         IRQSOFF_TRACER y
-  #         OSNOISE_TRACER y
-  #         PCI_QUIRKS y
-  #         KALLSYMS y
-  #         KALLSYMS_ALL y
-  #       '';
-  #     }
-  #   ];
-  # };
+  boot = {
+    kernelParams = [ "amd_iommu=on" "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ]; # or amd_iommu (cpu)
+    kernelModules = [ "vendor-reset" "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ];
+    extraModulePackages = [ config.boot.kernelPackages.vendor-reset ]; # Presumably fix for GPU Reset Bug
+    extraModprobeConfig = "options vfio-pci ids=10de:1f11,10de:10f9"; # grep PCI_ID /sys/bus/pci/devices/*/uevent
+    kernelPatches = [
+      {
+        name = "vendor-reset-reqs-and-other-stuff";
+        patch = null;
+        extraConfig = ''
+          FTRACE y
+          KPROBES y
+          FUNCTION_TRACER y
+          HWLAT_TRACER y
+          TIMERLAT_TRACER y
+          IRQSOFF_TRACER y
+          OSNOISE_TRACER y
+          PCI_QUIRKS y
+          KALLSYMS y
+          KALLSYMS_ALL y
+        '';
+      }
+    ];
+  };
 }
 
 #SHARED FOLDER
