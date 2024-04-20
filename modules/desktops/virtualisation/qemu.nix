@@ -5,11 +5,12 @@
 { config, pkgs, vars, ... }:
 
 {
-  # boot.extraModprobeConfig = ''
-  #   options kvm_intel nested=1
-  #   options kvm_intel emulate_invalid_guest_state=0
-  #   options kvm ignore_nsrs=1
-  # ''; # For OSX-KVM
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_intel emulate_invalid_guest_state=0
+    options kvm ignore_nsrs=1
+    options vfio-pci ids=10de:1f11,10de:10f9
+  ''; # For OSX-KVM
 
   users.groups = {
     libvirtd.members = [ "root" "${vars.user}" ];
@@ -59,7 +60,7 @@
     kernelParams = [ "amd_iommu=on" "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ]; # or amd_iommu (cpu)
     kernelModules = [ "vendor-reset" "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ];
     extraModulePackages = [ config.boot.kernelPackages.vendor-reset ]; # Presumably fix for GPU Reset Bug
-    extraModprobeConfig = "options vfio-pci ids=10de:1f11,10de:10f9"; # grep PCI_ID /sys/bus/pci/devices/*/uevent
+    # extraModprobeConfig = "options vfio-pci ids=10de:1f11,10de:10f9"; # grep PCI_ID /sys/bus/pci/devices/*/uevent
     kernelPatches = [
       {
         name = "vendor-reset-reqs-and-other-stuff";

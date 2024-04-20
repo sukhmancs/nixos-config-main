@@ -22,7 +22,11 @@
     easyeffects # Limiter, compressor, equalizer, auto valume for pipewire applications
     taisei # taisei project game
     rofi # application launcher
-    discord # discussion / chat app
+    (pkgs.discord.override {
+      # remove any overrides that you don't want
+      withOpenASAR = true;
+      withVencord = true;
+    })
     betterdiscordctl # discord customizer
     # rofi-pass-wayland # rofi-pass replacement for wayland
 
