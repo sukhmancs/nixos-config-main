@@ -1,9 +1,10 @@
 #
 # Nixvim
 #
-
-{ inputs, system, ... }:
-
 {
-  environment.systemPackages = [ inputs.nvim.packages.${system}.default ];
+  inputs,
+  system,
+  ...
+}: {
+  environment.systemPackages = [inputs.vim.packages.${system}.default];
 }

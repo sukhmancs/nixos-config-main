@@ -70,7 +70,7 @@
       "inputs": {
         "flake-utils": "flake-utils_7",
         "nixpkgs": [
-          "nvim",
+          "vim",
           "nixvim",
           "nixpkgs"
         ]
@@ -430,7 +430,7 @@
     "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
-          "nvim",
+          "vim",
           "nixvim",
           "nixpkgs"
         ]
@@ -672,7 +672,7 @@
     "gitignore_3": {
       "inputs": {
         "nixpkgs": [
-          "nvim",
+          "vim",
           "nixvim",
           "pre-commit-hooks",
           "nixpkgs"
@@ -695,7 +695,7 @@
     "gitignore_4": {
       "inputs": {
         "nixpkgs": [
-          "nvim",
+          "vim",
           "pre-commit-hooks",
           "nixpkgs"
         ]
@@ -779,7 +779,7 @@
     "home-manager_3": {
       "inputs": {
         "nixpkgs": [
-          "nvim",
+          "vim",
           "nixvim",
           "nixpkgs"
         ]
@@ -1033,7 +1033,7 @@
     "nix-darwin_2": {
       "inputs": {
         "nixpkgs": [
-          "nvim",
+          "vim",
           "nixvim",
           "nixpkgs"
         ]
@@ -1277,7 +1277,7 @@
         "home-manager": "home-manager_3",
         "nix-darwin": "nix-darwin_2",
         "nixpkgs": [
-          "nvim",
+          "vim",
           "nixpkgs"
         ],
         "pre-commit-hooks": "pre-commit-hooks_3"
@@ -1324,27 +1324,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
-        "type": "github"
-      }
-    },
-    "nvim": {
-      "inputs": {
-        "flake-parts": "flake-parts_2",
-        "nixpkgs": "nixpkgs_3",
-        "nixvim": "nixvim_2",
-        "pre-commit-hooks": "pre-commit-hooks_4"
-      },
-      "locked": {
-        "lastModified": 1713648346,
-        "narHash": "sha256-IvHV6UFhZuiu7Y2MY487zHmityHWWT3bO1Tj4kGMNd8=",
-        "owner": "elythh",
-        "repo": "nixvim",
-        "rev": "7e5081b2bbc7d6079800c248e52b58ec031a3ece",
-        "type": "github"
-      },
-      "original": {
-        "owner": "elythh",
-        "repo": "nixvim",
         "type": "github"
       }
     },
@@ -1537,12 +1516,12 @@
         "flake-utils": "flake-utils_8",
         "gitignore": "gitignore_3",
         "nixpkgs": [
-          "nvim",
+          "vim",
           "nixvim",
           "nixpkgs"
         ],
         "nixpkgs-stable": [
-          "nvim",
+          "vim",
           "nixvim",
           "nixpkgs"
         ]
@@ -1567,7 +1546,7 @@
         "flake-utils": "flake-utils_9",
         "gitignore": "gitignore_4",
         "nixpkgs": [
-          "nvim",
+          "vim",
           "nixpkgs"
         ],
         "nixpkgs-stable": "nixpkgs-stable_2"
@@ -1620,8 +1599,8 @@
         "nixvim": "nixvim",
         "nixvim-unstable": "nixvim-unstable",
         "nur": "nur",
-        "nvim": "nvim",
-        "plasma-manager": "plasma-manager"
+        "plasma-manager": "plasma-manager",
+        "vim": "vim"
       }
     },
     "rotate-text": {
@@ -1879,6 +1858,27 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "vim": {
+      "inputs": {
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": "nixpkgs_3",
+        "nixvim": "nixvim_2",
+        "pre-commit-hooks": "pre-commit-hooks_4"
+      },
+      "locked": {
+        "lastModified": 1713648346,
+        "narHash": "sha256-IvHV6UFhZuiu7Y2MY487zHmityHWWT3bO1Tj4kGMNd8=",
+        "owner": "elythh",
+        "repo": "nixvim",
+        "rev": "7e5081b2bbc7d6079800c248e52b58ec031a3ece",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elythh",
+        "repo": "nixvim",
         "type": "github"
       }
     },
