@@ -1,14 +1,11 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   colors = import ../theming/colors.nix;
 
   dutch = builtins.readFile (builtins.fetchurl {
     url = "https://raw.githubusercontent.com/OpenTaal/opentaal-wordlist/master/wordlist.txt";
     sha256 = "1gnpkb2afasbcfka6lhnpzlpafpns4k6j09h7dc0p13k7iggpr8j";
   });
-in
-{
+in {
   # # steam-run for codeium-vim
   # # start nvim in bash first time, so the spell files can be downloaded
   # programs.zsh.shellAliases = {
@@ -50,25 +47,25 @@ in
       }
       {
         event = "FileType";
-        pattern = [ "markdown" "org" "norg" ];
+        pattern = ["markdown" "org" "norg"];
         command = "setlocal conceallevel=2";
         desc = "Conceal Syntax Attribute";
       }
       {
         event = "FileType";
-        pattern = [ "markdown" "org" "norg" ];
+        pattern = ["markdown" "org" "norg"];
         command = "setlocal spell spelllang=en,nl";
         desc = "Spell Checking";
       }
       {
         event = "FileType";
-        pattern = [ "markdown" "org" "norg" ];
+        pattern = ["markdown" "org" "norg"];
         command = ":TableModeEnable";
         desc = "Table Mode";
       }
       {
         event = "FileType";
-        pattern = [ "markdown" ];
+        pattern = ["markdown"];
         command = "setlocal scrolloff=30 | setlocal wrap";
         desc = "Fixed cursor location on markdown (for preview) and enable wrapping";
       }
@@ -87,7 +84,7 @@ in
       wrap = false;
       scrolloff = 5;
       sidescroll = 40;
-      completeopt = [ "menu" "menuone" "noselect" ];
+      completeopt = ["menu" "menuone" "noselect"];
       pumheight = 15;
       fileencoding = "utf-8";
       swapfile = false;
@@ -319,8 +316,8 @@ in
       mini = {
         enable = true;
         modules = {
-          indentscope = { };
-          move = { };
+          indentscope = {};
+          move = {};
         };
       };
       indent-blankline.enable = true;
@@ -400,7 +397,7 @@ in
         };
         cursorword = {
           enable = true;
-          hl = { underline = true; };
+          hl = {underline = true;};
           minLength = 3;
         };
       };
@@ -493,33 +490,40 @@ in
           #   action = "cmp.mapping.select_prev_item()";
           # };
           "<Down>" = {
-            modes = [ "i" "s" ];
+            modes = ["i" "s"];
             action = "cmp.mapping.select_next_item()";
           };
           "<Up>" = {
-            modes = [ "i" "s" ];
+            modes = ["i" "s"];
             action = "cmp.mapping.select_prev_item()";
           };
           "<C-j>" = {
-            modes = [ "i" "s" ];
+            modes = ["i" "s"];
             action = "cmp.mapping.select_next_item()";
           };
           "<C-k>" = {
-            modes = [ "i" "s" ];
+            modes = ["i" "s"];
             action = "cmp.mapping.select_prev_item()";
           };
           # "<CR>" = "cmp.mapping.confirm({ select = true })";
           "<Tab>" = "cmp.mapping.confirm({ select = true })";
         };
         sources = [
-          { name = "nvim_lsp"; }
-          { name = "luasnip"; }
-          { name = "look"; keywordLength = 2; option = { convert_case = true; loud = true; }; }
-          { name = "path"; }
-          { name = "buffer"; }
-          { name = "nvim_lua"; }
-          { name = "orgmode"; }
-          { name = "neorg"; }
+          {name = "nvim_lsp";}
+          {name = "luasnip";}
+          {
+            name = "look";
+            keywordLength = 2;
+            option = {
+              convert_case = true;
+              loud = true;
+            };
+          }
+          {name = "path";}
+          {name = "buffer";}
+          {name = "nvim_lua";}
+          {name = "orgmode";}
+          {name = "neorg";}
         ];
       };
       which-key = {

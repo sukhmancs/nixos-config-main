@@ -5,5 +5,5 @@
 { inputs, system, ... }:
 
 {
-  environment.systemPackages = [ inputs.nixvim.packages.${system}.default ];
+  environment.systemPackages = [ inputs.nvim.packages.${system}.default ];
 }
