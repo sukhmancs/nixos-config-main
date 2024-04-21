@@ -44,4 +44,6 @@
       );
     })
   ];
+
+  virtualisation.waydroid.enable = true;
 }

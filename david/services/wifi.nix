@@ -20,7 +20,7 @@
     };
   };
 
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # Setup DNS proxy client
   services.dnscrypt-proxy2 = {
