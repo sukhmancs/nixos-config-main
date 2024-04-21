@@ -1869,15 +1869,15 @@
         "pre-commit-hooks": "pre-commit-hooks_4"
       },
       "locked": {
-        "lastModified": 1713648346,
-        "narHash": "sha256-IvHV6UFhZuiu7Y2MY487zHmityHWWT3bO1Tj4kGMNd8=",
-        "owner": "elythh",
+        "lastModified": 1713735501,
+        "narHash": "sha256-dTJ9T6VPFzflWAvqL5KXIBM62f37dzlIww3Hd/X6GyE=",
+        "owner": "sukhmancs",
         "repo": "nixvim",
-        "rev": "7e5081b2bbc7d6079800c248e52b58ec031a3ece",
+        "rev": "9f0f0bc605d12b27a5b4d7e965b5d50f9a944288",
         "type": "github"
       },
       "original": {
-        "owner": "elythh",
+        "owner": "sukhmancs",
         "repo": "nixvim",
         "type": "github"
       }
