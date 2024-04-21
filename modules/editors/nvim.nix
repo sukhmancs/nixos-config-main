@@ -305,6 +305,13 @@ in
     plugins = {
       lualine.enable = true;
       barbar.enable = true;
+      copilot-vim = {
+        enable = true;
+        extraConfig = {
+          "*" = true;
+          python = true;
+        };
+      };
       gitgutter = {
         enable = true;
         defaultMaps = false;
@@ -573,15 +580,25 @@ in
         };
       })
       (pkgs.vimUtils.buildVimPlugin rec {
-        pname = "copilot.vim";
-        version = "1e135c5303bc60598f6314a2276f31dc91aa34dd";
+        pname = "black";
+        version = "735733b20516f2ea849d20f585555bf41a40311f";
         src = pkgs.fetchFromGitHub {
-          owner = "github";
-          repo = "copilot.vim";
+          owner = "psf";
+          repo = "black";
           rev = version;
-          sha256 = "sha256-P04yEPMxNbSLvCQTBDSxHINI9sLjqcObVLEP/TpgZRk=";
+          sha256 = "sha256-AvcoZsqYeeW597Y89HuYxecafaO3WtLYRxljEVH+RHk=";
         };
       })
+      # (pkgs.vimUtils.buildVimPlugin rec {
+      #   pname = "copilot.vim";
+      #   version = "1e135c5303bc60598f6314a2276f31dc91aa34dd";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "github";
+      #     repo = "copilot.vim";
+      #     rev = version;
+      #     sha256 = "sha256-P04yEPMxNbSLvCQTBDSxHINI9sLjqcObVLEP/TpgZRk=";
+      #   };
+      # })
     ];
     extraConfigLua = ''
       require('luasnip.loaders.from_vscode').lazy_load()

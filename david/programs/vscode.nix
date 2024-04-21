@@ -27,6 +27,9 @@
         ms-python.python
         dart-code.flutter
         mkhl.direnv
+        ms-python.black-formatter
+        github.copilot
+        github.copilot-chat
       ];
       userSettings = {
         "files.autoSave" = "on"; # autosave
@@ -44,6 +47,11 @@
           # enable copilot for markdown, plaintext files
           "markdown" = "true";
           "plaintext" = "true";
+        };
+        "[python]" = {
+          # use black vs code extension to format python code
+          "editor.defaultFormatter" = "ms-python.black-formatter";
+          "editor.formatOnSave" = true;
         };
       };
       keybindings = [
