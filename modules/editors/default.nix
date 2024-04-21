@@ -13,7 +13,7 @@
 #
 
 [
-  ./nvim.nix
+  # ./nvim.nix
   # ./emacs
   # ./emacs/doom-emacs
 ]

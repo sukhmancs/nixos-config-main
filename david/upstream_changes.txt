@@ -3,15 +3,14 @@
 # have made to the forked repository.
 #
 
-- changed nixos-config/modules/hardware/[host]/nvidia.nix - updated amdbusid, nvidiabusid, powermanagement.
-- changed flake.nix - updated username.
-- changed configuration.nix - updated locale.
-- changed hyprland.nix - updated keyboard layout.
-- changed git.nix file - added lfs, git-helper.
-- changed qemu.nix file - added automatic reconnect (line 48 - line 55).
-- added `david/programs`, `david/services` to `hosts/work/default.nix`.
-- added `CTRL,space` keybinding to hyprland.nix (line 374) - it launches rofi-pass-wayland
-- added github copilot plugin - modules/editors/nvim.nix
-- disabled nvidia via commenting out nvidia.nix file in modules/hardware/work/default.nix
-- added grub themes in hosts/work/default.nix - line 42
+- changed nixos-config/modules/hardware/[host]/nvidia.nix    - updated amdbusid, nvidiabusid, powermanagement.
+- changed username                                           - updated flake.nix.
+- changed locale                                             - updated configuration.nix.
+- changed keyboard layout                                    - updated hyprland.conf.
+- added lfs, git-helper                                      - updated git.nix.
+- added automatic reconnect (line 48 - 55)                   - qemu.nix.
+- added `david/programs`, `david/services`                   - `hosts/work/default.nix`.
+- added `CTRL,space` keybinding to hyprland.nix (line 374)   - it launches rofi-pass-wayland
+- added github copilot plugin                                - modules/editors/nvim.nix
+- added grub themes                                          - hosts/work/default.nix - line 42
 
