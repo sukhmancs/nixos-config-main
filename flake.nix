@@ -59,7 +59,7 @@
 
     # Neovim
     vim = {
-      url = "github:elythh/nixvim";
+      url = "github:sukhmancs/nixvim";
     };
 
     # Emacs Overlays
