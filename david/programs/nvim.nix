@@ -6,5 +6,5 @@
   system,
   ...
 }: {
-  environment.systemPackages = [inputs.vim.packages.${system}.default];
+  environment.systemPackages = [inputs.nixvim-flake.packages.${system}.default];
 }

@@ -58,7 +58,7 @@
     };
 
     # Neovim
-    vim = {
+    nixvim-flake = {
       url = "github:elythh/nixvim";
     };
 
@@ -118,7 +118,7 @@
     nur,
     nixgl,
     nixvim,
-    vim,
+    nixvim-flake,
     nixvim-unstable,
     doom-emacs,
     hyprland,
@@ -141,7 +141,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim vim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager vars; # Inherit inputs
+        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim nixvim-flake doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager vars; # Inherit inputs
       }
     );
 
