@@ -1,10 +1,11 @@
 #
-#  Shell
+#  ndowsShell
 #
-
-{ pkgs, vars, ... }:
-
 {
+  pkgs,
+  vars,
+  ...
+}: {
   users.users.${vars.user} = {
     shell = pkgs.zsh;
   };
@@ -18,8 +19,9 @@
 
       ohMyZsh = {
         enable = true;
-        plugins = [ "git" ];
+        plugins = ["git"];
       };
+
       shellInit = ''
         # Spaceship
         source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
