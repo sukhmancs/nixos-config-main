@@ -61,7 +61,6 @@
     nixvim-flake = {
       url = "github:sukhmancs/nixvim"; # "github:elythh/nixvim"
     };
-
     # Emacs Overlays
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
