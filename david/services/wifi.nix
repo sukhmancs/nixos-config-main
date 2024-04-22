@@ -1,4 +1,3 @@
-#
 # Wifi - Setup Network manager with dnscrypt-proxy client. I have also configured fail to ban
 #
 {
@@ -14,8 +13,14 @@
     # If using dhcpcd:
     dhcpcd.extraConfig = "nohook resolv.conf";
     # If using NetworkManager:
-    networkmanager.enable = true;
-    networkmanager.dns = "none";
+    networkmanager = {
+      enable = true;
+      dns = "none";
+      plugins = with pkgs; [
+        networkmanager-openvpn
+        networkmanager-openconnect
+      ];
+    };
   };
 
   programs = {
