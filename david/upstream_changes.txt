@@ -5,7 +5,7 @@
 
 - changed nixos-config/modules/hardware/[host]/nvidia.nix    - updated amdbusid, nvidiabusid, powermanagement.
 - changed username                                           - updated flake.nix.
-- changed locale                                             - updated configuration.nix.
+- changed locale, warn-dirty(188)                            - updated configuration.nix.
 - changed keyboard layout                                    - updated hyprland.conf.
 - added lfs, git-helper                                      - updated git.nix.
 - added automatic reconnect (line 48 - 55)                   - qemu.nix.
