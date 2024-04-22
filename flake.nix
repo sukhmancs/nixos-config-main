@@ -59,7 +59,7 @@
 
     # Neovim
     vim = {
-      url = "github:sukhmancs/nixvim";
+      url = "github:elythh/nixvim";
     };
 
     # Emacs Overlays
@@ -118,6 +118,7 @@
     nur,
     nixgl,
     nixvim,
+    vim,
     nixvim-unstable,
     doom-emacs,
     hyprland,
@@ -140,7 +141,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager vars; # Inherit inputs
+        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim vim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager vars; # Inherit inputs
       }
     );
 
