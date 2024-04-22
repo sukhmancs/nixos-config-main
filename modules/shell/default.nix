@@ -9,9 +9,8 @@
 #           ├─ default.nix *
 #           └─ ...
 #
-
 [
   ./git.nix
-  # ./zsh.nix
+  ./zsh.nix
   ./direnv.nix
 ]
