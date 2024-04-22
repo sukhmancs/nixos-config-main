@@ -59,7 +59,7 @@
 
     # Neovim
     nixvim-flake = {
-      url = "github:elythh/nixvim";
+      url = "github:sukhmancs/nixvim"; # "github:elythh/nixvim"
     };
 
     # Emacs Overlays
