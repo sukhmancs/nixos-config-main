@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     steam-run # Run commands in the same FHS environment
     nix-prefetch-git # Fetch source hashes for git repository
@@ -30,6 +28,7 @@
     #chkrootkit # Scan for any rootkits
     vulnix # NixOS vulnerability scanner
     lynis # Security auditing tool
+    android-studio # react-native development
   ];
 
   nixpkgs.overlays = [
