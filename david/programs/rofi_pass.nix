@@ -1,24 +1,29 @@
 #
 # rofi-pass - A simple rofi frontend for pass
 #
-
-{ config, lib, pkgs, vars, ... }:
-
 {
-  config = lib.mkIf (config.x11wm.enable) {
+  config,
+  lib,
+  pkgs,
+  vars,
+  ...
+}: {
+  config = {
     home-manager.users.${vars.user} = {
-      programs = { 
-        rofi = {   # rofi-pass
-          pass = {  
+      programs = {
+        rofi = {
+          # rofi-pass
+          pass = {
             enable = true;
           };
         };
       };
 
       home.file.".config/rofi-pass" = {
-          source = ./rofi-pass;
-          recursive = true;
+        source = ./rofi-pass;
+        recursive = true;
       };
     };
   };
 }
+

@@ -2,32 +2,37 @@
 #  Hyprland Configuration
 #  Enable with "hyprland.enable = true;"
 #
-
-{ config, lib, pkgs, hyprland, hyprlock, hypridle, hyprspace, vars, host, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  hyprland,
+  hyprlock,
+  hypridle,
+  hyprspace,
+  vars,
+  host,
+  ...
+}: let
   colors = import ../theming/colors.nix;
 in
-with lib;
-with host;
-{
-  options = {
-    hyprland = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
+  with lib;
+  with host; {
+    options = {
+      hyprland = {
+        enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
       };
     };
-  };
 
-  config = mkIf (config.hyprland.enable) {
-    wlwm.enable = true;
+    config = mkIf (config.hyprland.enable) {
+      wlwm.enable = true;
 
-    environment =
-      let
+      environment = let
         exec = "exec dbus-launch Hyprland";
-      in
-      {
+      in {
         loginShellInit = ''
           if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
             ${exec}
@@ -42,7 +47,8 @@ with host;
           XDG_SESSION_DESKTOP = "Hyprland";
         };
         sessionVariables =
-          if hostName == "work" then {
+          if hostName == "work"
+          then {
             # GBM_BACKEND = "nvidia-drm";
             # __GL_GSYNC_ALLOWED = "0";
             # __GL_VRR_ALLOWED = "0";
@@ -56,7 +62,8 @@ with host;
             GDK_BACKEND = "wayland";
             WLR_NO_HARDWARE_CURSORS = "1";
             MOZ_ENABLE_WAYLAND = "1";
-          } else {
+          }
+          else {
             # QT_QPA_PLATFORM = "wayland";
             QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
@@ -73,44 +80,49 @@ with host;
         ];
       };
 
-    programs.hyprland = {
-      enable = true;
-      package = hyprland.packages.${pkgs.system}.hyprland;
-    };
-
-    security.pam.services.hyprlock = {
-      # text = "auth include system-auth";
-      text = "auth include login";
-      fprintAuth = if hostName == "xps" then true else false;
-    };
-
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
-          command = "${config.programs.hyprland.package}/bin/Hyprland"; # tuigreet not needed with exec-once hyprlock
-          user = vars.user;
-        };
+      programs.hyprland = {
+        enable = true;
+        package = hyprland.packages.${pkgs.system}.hyprland;
       };
-      vt = 7;
-    };
 
-    systemd.sleep.extraConfig = ''
-      AllowSuspend=yes
-      AllowHibernation=no
-      AllowSuspendThenHibernate=no
-      AllowHybridSleep=yes
-    ''; # Clamshell Mode
+      security.pam.services.hyprlock = {
+        # text = "auth include system-auth";
+        text = "auth include login";
+        fprintAuth =
+          if hostName == "xps"
+          then true
+          else false;
+      };
 
-    nix.settings = {
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-    };
+      services.greetd = {
+        enable = true;
+        settings = {
+          default_session = {
+            # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+            command = "${config.programs.hyprland.package}/bin/Hyprland"; # tuigreet not needed with exec-once hyprlock
+            user = vars.user;
+          };
+        };
+        vt = 7;
+      };
 
-    home-manager.users.${vars.user} =
-      let
-        lid = if hostName == "xps" then "LID0" else "LID";
+      systemd.sleep.extraConfig = ''
+        AllowSuspend=yes
+        AllowHibernation=no
+        AllowSuspendThenHibernate=no
+        AllowHybridSleep=yes
+      ''; # Clamshell Mode
+
+      nix.settings = {
+        substituters = ["https://hyprland.cachix.org"];
+        trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      };
+
+      home-manager.users.${vars.user} = let
+        lid =
+          if hostName == "xps"
+          then "LID0"
+          else "LID";
         lockScript = pkgs.writeShellScript "lock-script" ''
           action=$1
           ${pkgs.pipewire}/bin/pw-cli i all | ${pkgs.ripgrep}/bin/rg running
@@ -122,8 +134,7 @@ with host;
             fi
           fi
         '';
-      in
-      {
+      in {
         imports = [
           hyprland.homeManagerModules.default
           hyprlock.homeManagerModules.hyprlock
@@ -139,14 +150,16 @@ with host;
             disable_loading_bar = true;
             grace = 0;
           };
-          backgrounds = [{
-            monitor = "";
-            path = ".config/wall.png";
-            color = "rgba(25, 20, 20, 1.0)";
-            blur_passes = 1;
-            blur_size = 0;
-            brightness = 0.2;
-          }];
+          backgrounds = [
+            {
+              monitor = "";
+              path = ".config/wall.png";
+              color = "rgba(25, 20, 20, 1.0)";
+              blur_passes = 1;
+              blur_size = 0;
+              brightness = 0.2;
+            }
+          ];
           input-fields = [
             {
               monitor = "";
@@ -239,23 +252,34 @@ with host;
               fullscreen_opacity = 1;
               drop_shadow = false;
             };
-            monitor = [
-              ",preferred,auto,1,mirror,${toString mainMonitor}"
-            ] ++ (if hostName == "beelink" || hostName == "h310m" then [
-              "${toString mainMonitor},1920x1080@60,1920x0,1"
-              "${toString secondMonitor},1920x1080@60,0x0,1"
-            ] else if hostName == "work" then [
-              "${toString mainMonitor},1920x1080@60,0x0,1"
-              "${toString secondMonitor},1920x1200@60,1920x0,1"
-              "${toString thirdMonitor},1920x1200@60,3840x0,1"
-            ] else if hostName == "xps" then [
-              "${toString mainMonitor},3840x2400@60,0x0,2"
-              "${toString secondMonitor},1920x1080@60,1920x0,1"
-            ] else [
-              "${toString mainMonitor},1920x1080@60,0x0,1"
-            ]);
+            monitor =
+              [
+                ",preferred,auto,1,mirror,${toString mainMonitor}"
+              ]
+              ++ (
+                if hostName == "beelink" || hostName == "h310m"
+                then [
+                  "${toString mainMonitor},1920x1080@60,1920x0,1"
+                  "${toString secondMonitor},1920x1080@60,0x0,1"
+                ]
+                else if hostName == "work"
+                then [
+                  "${toString mainMonitor},1920x1080@60,0x0,1"
+                  "${toString secondMonitor},1920x1200@60,1920x0,1"
+                  "${toString thirdMonitor},1920x1200@60,3840x0,1"
+                ]
+                else if hostName == "xps"
+                then [
+                  "${toString mainMonitor},3840x2400@60,0x0,2"
+                  "${toString secondMonitor},1920x1080@60,1920x0,1"
+                ]
+                else [
+                  "${toString mainMonitor},1920x1080@60,0x0,1"
+                ]
+              );
             workspace =
-              if hostName == "beelink" || hostName == "h310m" then [
+              if hostName == "beelink" || hostName == "h310m"
+              then [
                 "1, monitor:${toString mainMonitor}"
                 "2, monitor:${toString mainMonitor}"
                 "3, monitor:${toString mainMonitor}"
@@ -264,14 +288,17 @@ with host;
                 "6, monitor:${toString secondMonitor}"
                 "7, monitor:${toString secondMonitor}"
                 "8, monitor:${toString secondMonitor}"
-              ] else if hostName == "xps" || hostName == "work" then [
+              ]
+              else if hostName == "xps" || hostName == "work"
+              then [
                 "1, monitor:${toString mainMonitor}"
                 "2, monitor:${toString mainMonitor}"
                 "3, monitor:${toString mainMonitor}"
                 "4, monitor:${toString secondMonitor}"
                 "5, monitor:${toString secondMonitor}"
                 "6, monitor:${toString secondMonitor}"
-              ] else [ ];
+              ]
+              else [];
             animations = {
               enabled = false;
               bezier = [
@@ -304,21 +331,25 @@ with host;
               accel_profile = "flat";
               sensitivity = 0.8;
               touchpad =
-                if hostName == "work" || hostName == "xps" || hostName == "probook" then {
+                if hostName == "work" || hostName == "xps" || hostName == "probook"
+                then {
                   natural_scroll = true;
                   scroll_factor = 0.2;
                   middle_button_emulation = true;
                   tap-to-click = true;
-                } else { };
+                }
+                else {};
             };
             gestures =
-              if hostName == "work" || hostName == "xps" || hostName == "probook" then {
+              if hostName == "work" || hostName == "xps" || hostName == "probook"
+              then {
                 workspace_swipe = true;
                 workspace_swipe_fingers = 3;
                 workspace_swipe_distance = 100;
                 workspace_swipe_create_new = true;
                 # workspace_swipe_numbered = true;
-              } else { };
+              }
+              else {};
 
             dwindle = {
               pseudotile = false;
@@ -388,7 +419,7 @@ with host;
               "ALTSHIFT,0,movetoworkspace,10"
               "ALTSHIFT,right,movetoworkspace,+1"
               "ALTSHIFT,left,movetoworkspace,-1"
-              "CTRL,Space,exec,${pkgs.rofi-pass-wayland}/bin/rofi-pass"
+              "CTRL,Space,exec,${pkgs.rofi-pass-wayland}/bin/rofi-pass-wayland"
               "SUPER,Z,layoutmsg,togglesplit"
               ",print,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze --wait 1 copysave area ~/Pictures/$(date +%Y-%m-%dT%H%M%S).png"
               ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 10"
@@ -407,9 +438,11 @@ with host;
               "SUPERCTRL,down,resizeactive,0 60"
             ];
             bindl =
-              if hostName == "xps" || hostName == "work" then [
+              if hostName == "xps" || hostName == "work"
+              then [
                 ",switch:Lid Switch,exec,$HOME/.config/hypr/script/clamshell.sh"
-              ] else [ ];
+              ]
+              else [];
             windowrulev2 = [
               "float,title:^(Volume Control)$"
               "keepaspectratio,class:^(firefox)$,title:^(Picture-in-Picture)$"
@@ -424,22 +457,33 @@ with host;
               "pin, title:^(Firefox)$"
               "opacity 0.9, class:^(kitty)"
             ];
-            exec-once = [
-              "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-              "${hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock"
-              "${pkgs.waybar}/bin/waybar"
-              "${pkgs.eww-wayland}/bin/eww daemon"
-              # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
-              "${pkgs.blueman}/bin/blueman-applet"
-              "${pkgs.swaynotificationcenter}/bin/swaync"
-              "${pkgs.hyprpaper}/bin/hyprpaper"
-            ] ++ (if hostName == "work" then [
-              "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
-              "${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive --vfs-cache-mode=writes"
-              # "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive"
-            ] else [ ]) ++ (if hostName == "xps" then [
-              "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
-            ] else [ ]);
+            exec-once =
+              [
+                "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+                "${hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock"
+                "${pkgs.waybar}/bin/waybar"
+                "${pkgs.eww-wayland}/bin/eww daemon"
+                # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
+                "${pkgs.blueman}/bin/blueman-applet"
+                "${pkgs.swaynotificationcenter}/bin/swaync"
+                "${pkgs.hyprpaper}/bin/hyprpaper"
+              ]
+              ++ (
+                if hostName == "work"
+                then [
+                  "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+                  "${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive --vfs-cache-mode=writes"
+                  # "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive"
+                ]
+                else []
+              )
+              ++ (
+                if hostName == "xps"
+                then [
+                  "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+                ]
+                else []
+              );
           };
         };
 
@@ -467,5 +511,5 @@ with host;
           '';
         };
       };
-  };
-}
+    };
+  }
