@@ -24,7 +24,7 @@
           platformToolsVersion = "34.0.4";
           buildToolsVersions = ["33.0.0" "30.0.3" "33.0.2" "34.0.0"];
           platformVersions = ["28" "31" "32" "33" "34"];
-          abiVersions = ["x86_64"]; # emulator related: on an ARM machine, replace "x86_64" with
+          abiVersions = ["x86"]; # emulator related: on an ARM machine, replace "x86_64" with
           # either "armeabi-v7a" or "arm64-v8a", depending on the architecture of your workstation.
           includeNDK = false;
           includeSystemImages = true; # emulator related: system images are needed for the emulator.
