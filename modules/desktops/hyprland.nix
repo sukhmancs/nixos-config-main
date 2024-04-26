@@ -419,7 +419,7 @@ in
               "ALTSHIFT,0,movetoworkspace,10"
               "ALTSHIFT,right,movetoworkspace,+1"
               "ALTSHIFT,left,movetoworkspace,-1"
-              "CTRL,Space,exec,${pkgs.rofi-pass-wayland}/bin/rofi-pass-wayland"
+              "CTRL,Space,exec,${pkgs.rofi-pass-wayland}/bin/rofi-pass"
               "SUPER,Z,layoutmsg,togglesplit"
               ",print,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze --wait 1 copysave area ~/Pictures/$(date +%Y-%m-%dT%H%M%S).png"
               ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 10"
