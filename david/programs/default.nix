@@ -17,7 +17,6 @@
   ./betterdiscord.nix
   #./zsh.nix
   ./nvim.nix
-  ./ags.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]

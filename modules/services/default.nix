@@ -16,7 +16,7 @@
   ./picom.nix
   ./polybar.nix
   ./samba.nix
-  #./swaync.nix
+  ./swaync.nix
   ./sxhkd.nix
   ./udiskie.nix
 ]
