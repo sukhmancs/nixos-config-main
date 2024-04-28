@@ -3,10 +3,7 @@
 # Some options:
 #   "Locked" means that the user can not change that value using FireFox UI.
 #
-
-{ config, lib, pkgs, vars, ... }:
-
-{
+{...}: {
   programs.firefox = {
     enable = true;
     policies = {
@@ -16,7 +13,8 @@
         Cryptomining = true;
         Fingerprinting = true;
       };
-      Cookies = {                                       # Disable Cookies, Delete cookies after session
+      Cookies = {
+        # Disable Cookies, Delete cookies after session
         Allow = [
           "https://chat.openai.com/"
           "https://gemini.google.com/"
@@ -29,8 +27,9 @@
           "https://careerready.mohawkcollege.ca"
           "http://beanthere.free.nf"
           "https://sukhmansingh.netlify.app"
+          "https://reddit.com"
         ];
-        AllowSession = ["https://reddit.com"];
+        #AllowSession = ["https://reddit.com"];
         Default = false;
         AcceptThirdParty = "never";
         RejectTracker = true;
@@ -38,12 +37,14 @@
         Behavior = "reject-foreign";
         BehaviorPrivateBrowsing = "reject";
       };
-      OfferToSaveLoginsDefault = false;                 # Disable save Logins
-      PictureInPicture = {                              # Enable/Disable picture in picture
+      OfferToSaveLoginsDefault = false; # Disable save Logins
+      PictureInPicture = {
+        # Enable/Disable picture in picture
         Enabled = true;
         Locked = true;
       };
-      FirefoxHome = {                                   # Custom FireFox Home
+      FirefoxHome = {
+        # Custom FireFox Home
         Search = false;
         TopSites = false;
         SponsoredTopSites = false;
@@ -53,7 +54,8 @@
         Snippets = false;
         Locked = true;
       };
-      Handlers = {                                      # What application or url should be opened based on MIME TYPE
+      Handlers = {
+        # What application or url should be opened based on MIME TYPE
         mimeTypes = {
           "application/msword" = {
             action = "useSystemDefault";
@@ -64,14 +66,16 @@
           mailto = {
             action = "useHelperApp";
             ask = true;
-            handlers = [{
-              name = "Gmail";
-              uriTemplate = "https://mail.google.com/mail/?extsrc=mailto&url=%s";
-            }];
+            handlers = [
+              {
+                name = "Gmail";
+                uriTemplate = "https://mail.google.com/mail/?extsrc=mailto&url=%s";
+              }
+            ];
           };
         };
       };
-      ManualAppUpdateOnly = true;                                   # Don't pop up "Update Firefox" message
+      ManualAppUpdateOnly = true; # Don't pop up "Update Firefox" message
       PasswordManagerEnabled = false;
       Preferences = {
         "accessibility.force_disabled" = {
@@ -91,7 +95,8 @@
           Value = true;
         };
       };
-      SanitizeOnShutdown = {                                        # Delete data on quit
+      SanitizeOnShutdown = {
+        # Delete data on quit
         Cache = true;
         Cookies = true;
         Downloads = false;
@@ -102,10 +107,12 @@
         OfflineApps = true;
         Locked = true;
       };
-      SearchEngines = {                                             # Prevent installing custom search engines
+      SearchEngines = {
+        # Prevent installing custom search engines
         PreventInstalls = true;
       };
-      UserMessaging = {                                             # Disable FireFox from showing messages
+      UserMessaging = {
+        # Disable FireFox from showing messages
         WhatsNew = false;
         ExtensionRecommendations = false;
         FeatureRecommendations = false;
@@ -115,9 +122,9 @@
         Locked = false;
       };
       GoToIntranetSiteForSingleWordEntryInAddressBar = true;
-      BlockAboutConfig = true;                                      # Disable access to about:config page
+      BlockAboutConfig = true; # Disable access to about:config page
       BlockAboutSupport = true;
-#      BlockAboutProfiles = true;
+      #      BlockAboutProfiles = true;
       BlockAboutAddons = true;
       DisableFirefoxStudies = true;
       DisableMasterPasswordCreation = true;
@@ -132,48 +139,57 @@
       DisplayMenuBar = "never";
       DisableTelemetry = true;
       DownloadDirectory = "~/Downloads/Firefox";
-      Certificates = { # Certificate for vast.ai
+      Certificates = {
+        # Certificate for vast.ai
         Install = ["./certificates/jvastai_root.cer"];
       };
       WebsiteFilter = {
-          Block = ["file://*/*"];
-          #Exceptions = ["http://example.org/*"];
+        Block = ["file://*/*"];
+        #Exceptions = ["http://example.org/*"];
       };
-      DNSOverHTTPS = { # Disable DNS queries over https because I am using dnscryptproxy on system.
+      DNSOverHTTPS = {
+        # Disable DNS queries over https because I am using dnscryptproxy on system.
         Enabled = false;
         Locked = true;
       };
-      EncryptedMediaExtensions = {                                  # Disable DRM Content
+      EncryptedMediaExtensions = {
+        # Disable DRM Content
         Enabled = false;
         Locked = true;
       };
       ExtensionSettings = {
-        "*" = { # Default configuration for all other extensions (i.e Block installation of all other extensions)
-          blocked_install_message =
-          "You do not have permissions to install extensions.
+        "*" = {
+          # Default configuration for all other extensions (i.e Block installation of all other extensions)
+          blocked_install_message = "You do not have permissions to install extensions.
           Please change the FireFox policy in your NixOS configurations.";
           installation_mode = "blocked";
           allowed_types = ["extension"];
         };
-        "uBlock0@raymondhill.net" = {     # UBlock Origin
+        "uBlock0@raymondhill.net" = {
+          # UBlock Origin
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
         };
-        "extension@one-tab.com" = {       # Onetab
+        "extension@one-tab.com" = {
+          # Onetab
           installation_mode = "allowed";
         };
-        "jid1-MnnxcxisBPnSXQ@jetpack" = { # Privacy Badger
+        "jid1-MnnxcxisBPnSXQ@jetpack" = {
+          # Privacy Badger
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
         };
-        "browser-extension@anonaddy" = {  # AnonAddy
+        "browser-extension@anonaddy" = {
+          # AnonAddy
           installation_mode = "allowed";
         };
-        "{9350bc42-47fb-4598-ae0f-825e3dd9ceba}" = { # Absolute enable right click
+        "{9350bc42-47fb-4598-ae0f-825e3dd9ceba}" = {
+          # Absolute enable right click
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/absolute-enable-right-click/latest.xpi";
         };
-        "tridactyl.vim@cmcaine.co.uk" = { # tridactyle
+        "tridactyl.vim@cmcaine.co.uk" = {
+          # tridactyle
           installation_mode = "allowed";
         };
 
@@ -182,45 +198,47 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
         };
       };
-      Homepage = { # Default HomePage settings
+      Homepage = {
+        # Default HomePage settings
         URL = "about:home";
         Locked = true;
         StartPage = "previous-session";
       };
       NetworkPrediction = false; # stop network prefeching
       OverridePostUpdatePage = ""; # do not show any page after firefox upgrade
-      PDFjs = { # enable default firefox pdf viewer
+      PDFjs = {
+        # enable default firefox pdf viewer
         Enabled = true;
         EnablePermissions = true; # owner documents permissions
       };
       Permissions = {
         Camera = {
-#          Allow = ["https://example.org","https://example.org:1234"];
-#          Block = ["https://example.edu"];
+          #          Allow = ["https://example.org","https://example.org:1234"];
+          #          Block = ["https://example.edu"];
           BlockNewRequests = true;
           Locked = true;
         };
         Microphone = {
-#          Allow = ["https://example.org"];
-#          Block = ["https://example.edu"];
+          #          Allow = ["https://example.org"];
+          #          Block = ["https://example.edu"];
           BlockNewRequests = true;
           Locked = true;
         };
         Location = {
           Allow = ["https://maps.google.com/"];
-#          Block = ["https://example.edu"];
+          #          Block = ["https://example.edu"];
           BlockNewRequests = true;
           Locked = true;
         };
         Notifications = {
-#          Allow = ["https://example.org"];
-#          Block = ["https://example.edu"];
+          #          Allow = ["https://example.org"];
+          #          Block = ["https://example.edu"];
           BlockNewRequests = true;
           Locked = true;
         };
         Autoplay = {
-#          Allow = ["https://example.org"];
-#          Block = ["https://example.edu"];
+          #          Allow = ["https://example.org"];
+          #          Block = ["https://example.edu"];
           Default = "block-audio-video";
           Locked = true;
         };
