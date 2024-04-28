@@ -22,7 +22,6 @@
     rofi # application launcher
     discord # chat
     betterdiscordctl # discord customizer
-    # rofi-pass-wayland # rofi-pass replacement for wayland
 
     #### System hardening
     #chkrootkit # Scan for any rootkits

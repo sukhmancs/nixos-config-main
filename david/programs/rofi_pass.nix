@@ -2,8 +2,6 @@
 # rofi-pass - A simple rofi frontend for pass
 #
 {
-  config,
-  lib,
   pkgs,
   vars,
   ...
@@ -15,6 +13,7 @@
           # rofi-pass
           pass = {
             enable = true;
+            package = pkgs.rofi-pass-wayland;
           };
         };
       };
@@ -26,4 +25,3 @@
     };
   };
 }
-

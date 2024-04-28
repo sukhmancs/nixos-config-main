@@ -11,6 +11,7 @@
   ./gnupg.nix
   ./pass.nix
   ./rofi.nix
+  ./rofi_pass.nix
   ./neofetch.nix
   ./kitty.nix
   ./betterdiscord.nix
