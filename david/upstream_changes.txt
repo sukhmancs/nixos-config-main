@@ -4,6 +4,7 @@
 #
 
 - changed nixos-config/modules/hardware/[host]/nvidia.nix    - updated amdbusid, nvidiabusid, powermanagement.
+- disabled nvidia                                            - updated modules/hardware/work/default.nix
 - changed username                                           - updated flake.nix.
 - changed locale, warn-dirty(188)                            - updated configuration.nix.
 - changed keyboard layout                                    - updated hyprland.conf.
