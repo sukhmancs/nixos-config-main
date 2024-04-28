@@ -23,7 +23,7 @@
     discord # chat
     betterdiscordctl # discord customizer
     pipes-rs # pipes screensaver in rust
-    brightnessctl # brightness controller
+    nasm # assembler to convert assembly to machine code for x86
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
