@@ -22,6 +22,7 @@
     rofi # application launcher
     discord # chat
     betterdiscordctl # discord customizer
+    pipes-rs # pipes screensaver in rust
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
