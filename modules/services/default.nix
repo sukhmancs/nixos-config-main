@@ -9,7 +9,6 @@
 #           └─ default.nix *
 #               └─ ...
 #
-
 [
   ./avahi.nix
   # ./dunst.nix
@@ -17,7 +16,7 @@
   ./picom.nix
   ./polybar.nix
   ./samba.nix
-  ./swaync.nix
+  #./swaync.nix
   ./sxhkd.nix
   ./udiskie.nix
 ]

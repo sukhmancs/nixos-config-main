@@ -23,6 +23,7 @@
     discord # chat
     betterdiscordctl # discord customizer
     pipes-rs # pipes screensaver in rust
+    brightnessctl # brightness controller
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
