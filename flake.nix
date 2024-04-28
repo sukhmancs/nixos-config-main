@@ -61,6 +61,12 @@
     nixvim-flake = {
       url = "github:sukhmancs/nixvim"; # "github:elythh/nixvim"
     };
+
+    # add ags
+    ags = {
+      url = "github:Aylur/ags";
+    };
+
     # Emacs Overlays
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -125,6 +131,7 @@
     hypridle,
     hyprspace,
     plasma-manager,
+    ags,
     ...
   }:
   # Function telling flake which inputs to use
@@ -154,7 +161,7 @@
     homeConfigurations = (
       import ./nix {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable home-manager nixgl vars;
+        inherit inputs nixpkgs nixpkgs-unstable home-manager nixgl vars ags;
       }
     );
   };
