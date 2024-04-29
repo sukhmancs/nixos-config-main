@@ -420,7 +420,7 @@ in
               "ALTSHIFT,right,movetoworkspace,+1"
               "ALTSHIFT,left,movetoworkspace,-1"
               "CTRL,Space,exec, pkill rofi-pass || ${pkgs.rofi-pass-wayland}/bin/rofi-pass"
-              "SHIFT,Space,exec, pkill rofi || rofi -show calc -modi calc -no-show-match -no-sort -terse -theme rofi_calc -calc-command \"echo -n '{result}' | wl-copy\""
+              "CTRLSHIFT,Space,exec, pkill rofi || rofi -show calc -modi calc -no-show-match -no-sort -terse -theme rofi_calc -calc-command \"echo -n '{result}' | wl-copy\""
               "SUPER,Z,layoutmsg,togglesplit"
               ",print,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze --wait 1 copysave area ~/Pictures/$(date +%Y-%m-%dT%H%M%S).png"
               ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 10"
