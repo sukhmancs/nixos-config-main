@@ -1,10 +1,11 @@
 #
 #  Shell
 #
-
-{ pkgs, vars, ... }:
-
 {
+  pkgs,
+  vars,
+  ...
+}: {
   users.users.${vars.user} = {
     shell = pkgs.zsh;
   };
@@ -22,11 +23,17 @@
 
         oh-my-zsh = {
           enable = true;
-          plugins = [ "git" ];
+          plugins = ["git"];
         };
         initExtra = ''
           #For Displaying gif in kitty terminal
           kitten icat --align left $HOME/.config/kitty/kitty.gif
+          bindkey '^I' autosuggest-accept
+          autoload -U history-search-end
+          zle -N history-beginning-search-backward-end history-search-end
+          zle -N history-beginning-search-forward-end history-search-end
+          bindkey "^[[A" history-beginning-search-backward-end
+          bindkey "^[[B" history-beginning-search-forward-end
         '';
 
         localVariables = {
