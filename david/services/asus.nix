@@ -60,13 +60,13 @@
     (writeShellScriptBin "powerprofilesctl-cycle" ''
       case $(powerprofilesctl get) in
         power-saver)
-          notify-send -a \"changepowerprofile\" -u low -i /etc/nixos/xmonad/icon/powerprofilesctl-balanced.png \"powerprofile: balanced\"
+          notify-send -a \"changepowerprofile\" -u low \"powerprofile: balanced\"
           powerprofilesctl set balanced;;
         balanced)
-          notify-send -a \"changepowerprofile\" -u low -i /etc/nixos/xmonad/icon/powerprofilesctl-performance.png \"powerprofile: performance\"
+          notify-send -a \"changepowerprofile\" -u low \"powerprofile: performance\"
           powerprofilesctl set performance;;
         performance)
-          notify-send -a \"changepowerprofile\" -u low -i /etc/nixos/xmonad/icon/powerprofilesctl-power-saver.png \"powerprofile: power-saver\"
+          notify-send -a \"changepowerprofile\" -u low \"powerprofile: power-saver\"
           powerprofilesctl set power-saver;;
       esac
     '')
