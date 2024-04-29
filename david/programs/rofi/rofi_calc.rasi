@@ -6,7 +6,7 @@
  
 configuration {
 display-drun: "󱓞 Applications";
-show-icons: true;
+show-icons: false;
 icon-theme: "Gruvminimal";
 }
 
