@@ -1,5 +1,5 @@
 #
-# Setup for Asus laptop. Enabled power management, power profiles using power-profiles-daemon, and rog-control-center. Also enables supergfxd for GPU switching. Added some scripts to control power profiles and GPU switching. eg, asusrog-gosilent, asusrog-gosave, asusrog-gonormal, asusrog-goboost, asusrog-dgpu-enable, asusrog-dgpu-disable, asusrog-monitor-mhz, powerprofilesctl-cycle. Also added a systemd service to set the battery threshold to 60% to protect the battery life.
+# Setup for Asus laptop. Enabled power management, power profiles using power-profiles-daemon, and rog-control-center. Also enables supergfx for GPU switching. Added some scripts to control power profiles and GPU switching. eg, asusrog-gosilent, asusrog-gosave, asusrog-gonormal, asusrog-goboost, asusrog-dgpu-enable, asusrog-dgpu-disable, asusrog-monitor-mhz, powerprofilesctl-cycle. Also added a systemd service to set the battery threshold to 60% to protect the battery life.
 # Run these scripts using following commands:
 #     asusrog-gosilent - set power profile to power-saver
 #     asusrog-gosave - set power profile to power-saver and set CPU governor to conservative
@@ -27,11 +27,12 @@
     };
   };
 
-  powerManagement.powertop.enable = true;
+  # powerManagement.powertop.enable = true; #  powertop enables USB auto-suspend by default.
   # The amount of time the system spends in suspend mode before the system is automatically put into hibernate mode.
   systemd.sleep.extraConfig = "HibernateDelaySec=5min";
   services.auto-cpufreq.enable = true;
   services.thermald.enable = true; # temperature management daemon
+
   services.supergfxd = {
     enable = true;
     settings = {
@@ -45,6 +46,7 @@
     };
   };
   systemd.services.supergfxd.path = [pkgs.kmod pkgs.pciutils];
+
   environment.systemPackages = with pkgs; [
     radeontop
     powertop
@@ -52,6 +54,7 @@
     config.boot.kernelPackages.cpupower
     # pkgs.cudatoolkit # TODO: Maybe add this again when there is more internet
     ryzenadj
+    libnotify
     # pkgs.cudaPackages.cuda-samples
     pciutils
     (writeShellScriptBin "powerprofilesctl-cycle" ''
@@ -102,4 +105,5 @@
     # fanCurvesConfig = builtins.readFile ../config/fan_curves.ron;
   };
   services.power-profiles-daemon.enable = true;
+  services.acpid.enable = true; # acpid is needed for rog-control-center
 }
