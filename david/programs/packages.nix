@@ -25,6 +25,7 @@
     pipes-rs # pipes screensaver in rust
     nasm # assembler to convert assembly to machine code for x86
     lm_sensors # tools for reading hardware sensors
+    gimp # graphics software
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
