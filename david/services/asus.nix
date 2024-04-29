@@ -1,6 +1,17 @@
+#
+# Setup for Asus laptop. Enabled power management, power profiles using power-profiles-daemon, and rog-control-center. Also enables supergfxd for GPU switching. Added some scripts to control power profiles and GPU switching. eg, asusrog-gosilent, asusrog-gosave, asusrog-gonormal, asusrog-goboost, asusrog-dgpu-enable, asusrog-dgpu-disable, asusrog-monitor-mhz, powerprofilesctl-cycle. Also added a systemd service to set the battery threshold to 60% to protect the battery life.
+# Run these scripts using following commands:
+#     asusrog-gosilent - set power profile to power-saver
+#     asusrog-gosave - set power profile to power-saver and set CPU governor to conservative
+#     asusrog-gonormal - set power profile to balanced
+#     asusrog-goboost - set power profile to performance and set CPU governor to ondemand
+#     asusrog-dgpu-enable - enable discrete GPU
+#     asusrog-dgpu-disable - disable discrete GPU
+#     asusrog-monitor-mhz - monitor CPU frequency
+#     powerprofilesctl-cycle - cycle through power profiles
+#
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -39,7 +50,7 @@
     powertop
     config.boot.kernelPackages.turbostat
     config.boot.kernelPackages.cpupower
-    pkgs.cudatoolkit # TODO: Maybe add this again when there is more internet
+    # pkgs.cudatoolkit # TODO: Maybe add this again when there is more internet
     ryzenadj
     # pkgs.cudaPackages.cuda-samples
     pciutils
