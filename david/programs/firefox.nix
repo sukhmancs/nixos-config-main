@@ -155,7 +155,7 @@
       EncryptedMediaExtensions = {
         # Disable DRM Content
         Enabled = false;
-        Locked = true;
+        Locked = false;
       };
       ExtensionSettings = {
         "*" = {
