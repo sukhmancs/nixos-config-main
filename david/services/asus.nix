@@ -30,9 +30,9 @@
   # powerManagement.powertop.enable = true; #  powertop enables USB auto-suspend by default.
   # The amount of time the system spends in suspend mode before the system is automatically put into hibernate mode.
   systemd.sleep.extraConfig = "HibernateDelaySec=5min";
-  services.auto-cpufreq.enable = true;
-  services.thermald.enable = true; # temperature management daemon
-
+  services.auto-cpufreq.enable = true; # auto-cpufreq is a CPU speed and power optimizer for Linux.
+  services.thermald.enable = true; # temperature management for intel processors
+  # supergfxd for GPU switching
   services.supergfxd = {
     enable = true;
     settings = {
@@ -48,15 +48,16 @@
   systemd.services.supergfxd.path = [pkgs.kmod pkgs.pciutils];
 
   environment.systemPackages = with pkgs; [
-    radeontop
-    powertop
-    config.boot.kernelPackages.turbostat
-    config.boot.kernelPackages.cpupower
+    radeontop # monitor GPU usage
+    powertop # monitor power usage
+    config.boot.kernelPackages.turbostat # monitor CPU frequency
+    config.boot.kernelPackages.cpupower # monitor CPU frequency
     # pkgs.cudatoolkit # TODO: Maybe add this again when there is more internet
-    ryzenadj
-    libnotify
+    ryzenadj # adjust power settings for ryzen processors
+    libnotify # for notifications (notify-send)
     # pkgs.cudaPackages.cuda-samples
-    pciutils
+    pciutils # for lspci command
+    # this scripts will control power profiles and GPU switching
     (writeShellScriptBin "powerprofilesctl-cycle" ''
       case $(powerprofilesctl get) in
         power-saver)
@@ -99,11 +100,13 @@
     '')
   ];
   programs.rog-control-center.enable = true;
+  # asusctl
   services.asusd = {
     enable = true;
     enableUserService = true;
     # fanCurvesConfig = builtins.readFile ../config/fan_curves.ron;
   };
+  # power-profiles-daemon
   services.power-profiles-daemon.enable = true;
   services.acpid.enable = true; # acpid is needed for rog-control-center
 }
