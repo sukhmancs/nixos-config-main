@@ -58,6 +58,7 @@
     # pkgs.cudaPackages.cuda-samples
     pciutils # for lspci command
     # this scripts will control power profiles and GPU switching
+    # I do not know how exactly powerprofiles-daemon works, but based on their gitlab descriptions, it sets up some profiles that will probably update the CPU governors and update the Scaling drivers to act accordingly. It also depends on p-state scaling drivers such as amd_pstate. So because my AMD cpu does not suppert p-state drivers (i.e. default to using acpi_cpufreq), 'performance' profile will not be available or will not work.
     (writeShellScriptBin "powerprofilesctl-cycle" ''
       case $(powerprofilesctl get) in
         power-saver)
@@ -83,6 +84,13 @@
       echo 0 |sudo tee /sys/devices/platform/asus-nb-wmi/dgpu_disable
       echo "please logout and login again to use discrete graphics"
     '')
+    # these scripts will set the given power profile and CPU governor. Cpu governors are set of algorithms that will tell the Scaling driver (in our case it is acpi_cpufreq) to set the frequency of the CPU. The available governors are:
+    # ondemand: Dynamically changes the frequency depending on CPU load
+    # conservative: Similar to ondemand, but more conservative
+    # schedutil: Modern replacement for ondemand
+    # powersave: Keeps the CPU at the lowest frequency
+    # performance: Keeps the CPU at the highest frequency
+    # To learn more about CPU governors, visit https://wiki.archlinux.org/title/CPU_frequency_scaling
     (writeShellScriptBin "asusrog-goboost" ''
       (set -x; powerprofilesctl set performance; sudo cpupower frequency-set -g ondemand >&/dev/null;)
     '')
