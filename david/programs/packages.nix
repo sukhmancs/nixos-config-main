@@ -36,7 +36,8 @@
     lynis # Security auditing tool
 
     # Convert mkv to gif and then optimize this gif to be of smaller size
-    (writeShellScriptBin "mkv-to-gif" ''
+    # run it like this: convert-to-gif input.mkv output.gif
+    (writeShellScriptBin "convert-to-gif" ''
       ffmpeg -i "$1" -vf "fps=10,scale=320:-1:flags=lanczos" -c:v pam -f image2pipe - | convert -delay 10 -loop 0 - gif:- | gifsicle --optimize=3 --colors 256 > "$2"
     '')
   ];
