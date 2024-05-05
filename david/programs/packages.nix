@@ -31,7 +31,6 @@
     #chkrootkit # Scan for any rootkits
     vulnix # NixOS vulnerability scanner
     lynis # Security auditing tool
-    android-studio # react-native development
   ];
 
   nixpkgs.overlays = [
@@ -46,6 +45,4 @@
       );
     })
   ];
-
-  virtualisation.waydroid.enable = true;
 }
