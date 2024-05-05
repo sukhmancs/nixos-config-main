@@ -27,6 +27,8 @@
     lm_sensors # tools for reading hardware sensors
     libqalculate # calculator library for rofi-calc
     qalculate-gtk # calculator gui
+    unityhub # game development
+
     #### System hardening
     #chkrootkit # Scan for any rootkits
     vulnix # NixOS vulnerability scanner
