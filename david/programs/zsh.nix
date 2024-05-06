@@ -28,12 +28,12 @@
         initExtra = ''
           #For Displaying gif in kitty terminal
           kitten icat --align left $HOME/.config/kitty/kitty.gif
-          bindkey '^I' autosuggest-accept
+          bindkey '\t\t' autosuggest-accept # use ctrl + space to accept autosuggestions
           autoload -U history-search-end
-          zle -N history-beginning-search-backward-end history-search-end
-          zle -N history-beginning-search-forward-end history-search-end
-          bindkey "^[[A" history-beginning-search-backward-end
-          bindkey "^[[B" history-beginning-search-forward-end
+          # zle -N history-beginning-search-backward-end history-search-end
+          # zle -N history-beginning-search-forward-end history-search-end
+          bindkey "^[[A" history-beginning-search-backward
+          bindkey "^[[B" history-beginning-search-forward
         '';
 
         localVariables = {

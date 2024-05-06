@@ -29,6 +29,7 @@
     qalculate-gtk # calculator gui
     unityhub # game development
     gifsicle # optimize gifs (i.e. decrease the size of gif etc.)
+    rm-improved # rip: alternative to rm
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
