@@ -30,6 +30,7 @@
     unityhub # game development
     gifsicle # optimize gifs (i.e. decrease the size of gif etc.)
     rm-improved # rip: alternative to rm
+    tor-browser # privacy focused browser
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
