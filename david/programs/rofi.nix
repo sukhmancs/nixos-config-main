@@ -4,8 +4,13 @@
 {
   pkgs,
   vars,
+  config,
   ...
-}: {
+}:
+let
+inherit (config.home-manager.users.${vars.user}.lib.formats.rasi) mkLiteral;
+in
+ {
   home-manager.users.${vars.user} = {
     programs = {
       rofi = {

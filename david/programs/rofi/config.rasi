@@ -6,7 +6,7 @@
 
 configuration {
 display-drun: "󱓞 Applications";
-show-icons: true;
+show-icons: false;
 icon-theme: "Gruvminimal";
 }
 
@@ -50,7 +50,6 @@ imagebox {
 listbox {
     spacing:                     20px;
     padding:                     20px;
-    background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "inputbar", "listview", "message" ];
 }
@@ -81,16 +80,15 @@ message {
     margin:             12px 0 0;
     border-radius:      16px;
     border-color:       #b95cb9;
-    background-image:   linear-gradient(45, #b95cb9d9, #4774bfd9);
+    background-image:   linear-gradient(45, #282c34, #f7870a);
 }
 
 textbox {
     padding:    8px 24px;
+    background-color: #282c34;
 }
 
-listview {
-    background-color:   transparent;
-
+listview {    
     margin:     12px 0 0;
     lines:      8;
     columns:    1;
@@ -105,11 +103,19 @@ element {
 }
 
 element normal active {
-    text-color: #f7870a; 
+    text-color: #b2b2b2; 
 }
 
-element selected normal, element selected active {
+element selected {
     background-image:    linear-gradient(45, #f7870a, #4774bfd9);
+}
+
+element normal urgent {
+    text-color: #b2b2b2;
+}
+
+element selected urgent {
+    background-color: #b2b2b2;
 }
 
 element-icon {
@@ -118,5 +124,5 @@ element-icon {
 }
 
 element-text {
-    text-color: #ebdbb3;
+    text-color: inherit;
 }
