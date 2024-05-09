@@ -77,7 +77,7 @@
 
     # Official Hyprland Flake
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
 
     # Hyprlock
@@ -96,7 +96,6 @@
     hyprspace = {
       url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # KDE Plasma User Settings Generator

@@ -8,10 +8,23 @@
 #       └─ ./<host>.nix
 #           └─ default.nix
 #
-
-{ inputs, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur, nixvim, doom-emacs, hyprland, hyprlock, hypridle, hyprspace, plasma-manager, vars, ... }:
-
-let
+{
+  inputs,
+  nixpkgs,
+  nixpkgs-unstable,
+  nixos-hardware,
+  home-manager,
+  nur,
+  nixvim,
+  doom-emacs,
+  hyprland,
+  hyprlock,
+  hypridle,
+  hyprspace,
+  plasma-manager,
+  vars,
+  ...
+}: let
   system = "x86_64-linux";
 
   pkgs = import nixpkgs {
@@ -25,8 +38,7 @@ let
   };
 
   lib = nixpkgs.lib;
-in
-{
+in {
   # Desktop Profile
   beelink = lib.nixosSystem {
     inherit system;
@@ -60,8 +72,8 @@ in
       host = {
         hostName = "work";
         mainMonitor = "eDP-1";
-        secondMonitor = "HDMI-A-2";
-        thirdMonitor = "DP-1";
+        secondMonitor = "DP-4";
+        thirdMonitor = "DP-5";
       };
     };
     modules = [
