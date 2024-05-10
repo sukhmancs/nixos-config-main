@@ -31,6 +31,7 @@
     gifsicle # optimize gifs (i.e. decrease the size of gif etc.)
     rm-improved # rip: alternative to rm
     tor-browser # privacy focused browser
+    vesktop # alternative to Discord with Vencord built-in
 
     #### System hardening
     #chkrootkit # Scan for any rootkits

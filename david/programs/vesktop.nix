@@ -1,6 +1,6 @@
-{
-  xdg.configFile = {
-    "vesktop/settings/settings.json".text = builtins.toJSON {
+{vars, ...}: {
+  home-manager.users.${vars.user} = {
+    home.file.".config/vesktop/settings/settings.json".text = builtins.toJSON {
       notifyAboutUpdates = true;
       autoUpdate = false;
       autoUpdateNotification = false;
