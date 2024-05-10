@@ -22,6 +22,7 @@
   hypridle,
   hyprspace,
   plasma-manager,
+  catppuccin,
   vars,
   ...
 }: let
@@ -68,7 +69,7 @@ in {
   work = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system unstable hyprland hyprlock hypridle hyprspace vars;
+      inherit inputs system unstable hyprland hyprlock hypridle hyprspace catppuccin vars;
       host = {
         hostName = "work";
         mainMonitor = "eDP-1";

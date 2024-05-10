@@ -1,5 +1,12 @@
-{vars, ...}: {
+{
+  vars,
+  catppuccin,
+  ...
+}: {
   home-manager.users.${vars.user} = {
+    imports = [
+      catppuccin.homeManagerModules.catppuccin
+    ];
     programs.starship = {
       enable = true;
       catppuccin.enable = true;
