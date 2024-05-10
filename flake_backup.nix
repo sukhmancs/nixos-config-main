@@ -46,14 +46,14 @@
     };
 
     # Neovim
-    nixvim-flake = {
-      url = "github:sukhmancs/nixvim"; # "github:elythh/nixvim"
-    };
-
-    # Neovim
     nixvim = {
       url = "github:nix-community/nixvim/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Neovim
+    nixvim-flake = {
+      url = "github:sukhmancs/nixvim"; # "github:elythh/nixvim"
     };
 
     # Neovim
@@ -105,7 +105,6 @@
       inputs.home-manager.follows = "nixpkgs";
     };
   };
-
   outputs = inputs @ {
     self,
     nixpkgs,
@@ -116,8 +115,8 @@
     darwin,
     nur,
     nixgl,
-    nixvim-flake,
     nixvim,
+    nixvim-flake,
     nixvim-unstable,
     doom-emacs,
     hyprland,
@@ -131,7 +130,7 @@
   let
     # Variables Used In Flake
     vars = {
-      user = "matthias";
+      user = "david";
       location = "$HOME/.setup";
       terminal = "kitty";
       editor = "nvim";
@@ -140,7 +139,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager vars; # Inherit inputs
+        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim nixvim-flake doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager vars; # Inherit inputs
       }
     );
 

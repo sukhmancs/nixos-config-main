@@ -37,6 +37,7 @@
     settings = {
       ipv6_servers = true;
       require_dnssec = true;
+      cache = true;
 
       sources.public-resolvers = {
         urls = [
@@ -47,11 +48,29 @@
         minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
       };
 
-      # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-      # server_names = [ ... ];
+      sources.relays = {
+        urls = [
+          "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md"
+          "https://download.dnscrypt.info/resolvers-list/v3/relays.md"
+        ];
+        cache_file = "/var/lib/dnscrypt-proxy2/relays.md";
+        minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+        refresh_delay = 72;
+        # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
+        # server_names = [ ... ];
+      };
+
+      anonymized_dns = {
+        skip_incompatible = true;
+        routes = [
+          {
+            server_name = "*";
+            via = ["*"];
+          }
+        ];
+      };
     };
   };
-
   systemd.services.dnscrypt-proxy2.serviceConfig = {
     StateDirectory = "dnscrypt-proxy";
   };
