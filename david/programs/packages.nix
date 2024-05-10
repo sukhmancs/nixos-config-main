@@ -33,6 +33,9 @@
     rm-improved # rip: alternative to rm
     tor-browser # privacy focused browser
     vesktop # alternative to Discord with Vencord built-in
+    charm-freeze # generate images of code - freeze --execute "ls -lah"
+    exercism
+    git-extras # Provides useful commands like git-summary
 
     #### System hardening
     #chkrootkit # Scan for any rootkits

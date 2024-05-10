@@ -53,15 +53,15 @@
         # server_names = [ ... ];
       };
 
-      anonymized_dns = {
-        skip_incompatible = true;
-        routes = [
-          {
-            server_name = "*";
-            via = ["*"];
-          }
-        ];
-      };
+      # anonymized_dns = {
+      #   skip_incompatible = true;
+      #   routes = [
+      #     {
+      #       server_name = "*";
+      #       via = ["*"];
+      #     }
+      #   ];
+      # };
     };
   };
   systemd.services.dnscrypt-proxy2.serviceConfig = {
