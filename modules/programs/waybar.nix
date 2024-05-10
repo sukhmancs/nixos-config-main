@@ -1,6 +1,7 @@
 #
 #  Bar
 #
+<<<<<<< HEAD
 {
   config,
   lib,
@@ -10,6 +11,11 @@
   host,
   ...
 }: let
+=======
+
+{ config, lib, pkgs, unstable, vars, host, ... }:
+let
+>>>>>>> upstream/master
   colors = import ../theming/colors.nix;
 in
   with host; let
@@ -76,6 +82,7 @@ in
         "custom/notification"
       ];
 
+<<<<<<< HEAD
     sinkBuiltIn = "Built-in Audio Analog Stereo";
     sinkVideocard = ''Ellesmere HDMI Audio \[Radeon RX 470\/480 \/ 570\/580\/590\] Digital Stereo \(HDMI 3\)'';
     sinkBluetooth = "S10 Bluetooth Speaker";
@@ -95,6 +102,28 @@ in
           #   enable = true;
           #   target = "sway-session.target";
           # };
+=======
+  sinkBuiltIn = "Built-in Audio Analog Stereo";
+  sinkVideocard = ''Ellesmere HDMI Audio \[Radeon RX 470\/480 \/ 570\/580\/590\] Digital Stereo \(HDMI 3\)'';
+  sinkBluetooth = "S10 Bluetooth Speaker";
+  headset = sinkBuiltIn;
+  speaker = sinkBluetooth;
+in
+{
+  config = lib.mkIf (config.wlwm.enable) {
+    environment.systemPackages = with unstable; [
+      waybar
+    ];
+
+    home-manager.users.${vars.user} = with colors.scheme.default; {
+      programs.waybar = {
+        enable = true;
+        package = unstable.waybar;
+        # systemd = {
+        #   enable = true;
+        #   target = "hyprland-session.target";
+        # };
+>>>>>>> upstream/master
 
           style = ''
             * {
@@ -218,6 +247,7 @@ in
                 on-click-right = "sleep 0.1; swaync-client -d -sw";
                 escape = true;
               };
+<<<<<<< HEAD
               "sway/workspaces" = {
                 format = "<span font='11'>{icon}</span>";
                 format-icons = {
@@ -251,6 +281,47 @@ in
                   "7" = [];
                   "8" = [];
                 };
+=======
+            };
+            "wlr/workspaces" = {
+              format = "<span font='11'>{name}</span>";
+              active-only = false;
+              on-click = "activate";
+            };
+            "hyprland/workspaces" = {
+              format = "<span font='11'>{name}</span>";
+              window-rewrite = { };
+            };
+            clock = {
+              format = "{:%b %d %H:%M}  ";
+              on-click = "sleep 0.1; ${pkgs.eww-wayland}/bin/eww open --toggle calendar --screen 0";
+            };
+            cpu = {
+              format = " {usage}% <span font='11'></span> ";
+              interval = 1;
+            };
+            disk = {
+              format = "{percentage_used}% <span font='11'></span>";
+              path = "/";
+              interval = 30;
+            };
+            memory = {
+              format = "{}% <span font='11'></span>";
+              interval = 1;
+            };
+            backlight = {
+              device = "intel_backlight";
+              format = "{percent}% <span font='11'>{icon}</span>";
+              format-icons = [ "" "󰖙" ];
+              on-scroll-down = "${pkgs.light}/bin/light -U 5";
+              on-scroll-up = "${pkgs.light}/bin/light -A 5";
+            };
+            battery = {
+              interval = 1;
+              states = {
+                warning = 30;
+                critical = 15;
+>>>>>>> upstream/master
               };
               "wlr/workspaces" = {
                 format = "<span font='11'>{name}</span>";

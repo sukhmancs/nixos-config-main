@@ -458,6 +458,7 @@ in
               "pin, title:^(Firefox)$"
               "opacity 0.9, class:^(kitty)"
             ];
+<<<<<<< HEAD
             exec-once =
               [
                 "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -486,6 +487,25 @@ in
                 ]
                 else []
               );
+=======
+            exec-once = [
+              "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+              "${hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock"
+              "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
+              "${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
+              "${pkgs.eww-wayland}/bin/eww daemon"
+              # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
+              "${pkgs.blueman}/bin/blueman-applet"
+              "${pkgs.swaynotificationcenter}/bin/swaync"
+              "${pkgs.hyprpaper}/bin/hyprpaper"
+            ] ++ (if hostName == "work" then [
+              "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+              "${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive --vfs-cache-mode=writes"
+              # "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive"
+            ] else [ ]) ++ (if hostName == "xps" then [
+              "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+            ] else [ ]);
+>>>>>>> upstream/master
           };
         };
 
