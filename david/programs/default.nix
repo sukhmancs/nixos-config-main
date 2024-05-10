@@ -17,8 +17,9 @@
   ./betterdiscord.nix
   # ./zsh.nix
   ./nvim.nix
-  ./vesktop.nix
+  # ./vesktop.nix
   ./nushell.nix
+  ./starship.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]

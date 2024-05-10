@@ -9,7 +9,6 @@
 #           ├─ default.nix *
 #           └─ ...
 #
-
 [
   ./alacritty.nix
   ./accounts.nix

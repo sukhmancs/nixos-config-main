@@ -124,7 +124,8 @@
           	rm -fp $tmp
           }
 
-          source /home/${vars.user}/.config/nushell/extra.nu
+          # source /home/${vars.user}/.config/nushell/extra.nu
+          kitten icat --align left $HOME/.config/kitty/kitty.gif
         '';
       };
     };

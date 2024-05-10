@@ -2,7 +2,6 @@
   environment.systemPackages = with pkgs; [
     steam-run # Run commands in the same FHS environment
     nix-prefetch-git # Fetch source hashes for git repository
-    nix-inspect.packages.default # inspect nix configs
     heimdall
     mono
     bleachbit # A program to free up disk space
@@ -33,7 +32,6 @@
     rm-improved # rip: alternative to rm
     tor-browser # privacy focused browser
     vesktop # alternative to Discord with Vencord built-in
-    charm-freeze # generate images of code - freeze --execute "ls -lah"
     exercism
     git-extras # Provides useful commands like git-summary
 
