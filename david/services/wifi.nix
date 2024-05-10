@@ -1,13 +1,6 @@
 # Wifi - Setup Network manager with dnscrypt-proxy client. I have also configured fail to ban
 #
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  vars,
-  ...
-}: {
+{pkgs, ...}: {
   networking = {
     nameservers = ["127.0.0.1" "::1"];
     # If using dhcpcd:
