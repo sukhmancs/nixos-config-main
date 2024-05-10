@@ -18,6 +18,7 @@
   # ./zsh.nix
   ./nvim.nix
   ./vesktop.nix
+  ./nushell.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]

@@ -3,9 +3,7 @@
   vars,
   lib,
   ...
-}: let
-  inherit (import ./options.nix) dotfilesDir userName;
-in {
+}: {
   programs = {
     direnv = {
       enable = true;
@@ -44,9 +42,7 @@ in {
         nv = "nvim";
 
         # Nix
-        ns = "sudo sh -c 'nixos-rebuild switch --flake ${dotfilesDir}/.# |& ${pkgs.nix-output-monitor}/bin/nom'";
-        hs = "home-manager switch --flake ${dotfilesDir}";
-        nd = "nix develop -c $env.SHELL";
+        ns = "sudo sh -c 'nixos-rebuild switch --flake $HOME/nixos-config/.#work |& ${pkgs.nix-output-monitor}/bin/nom'";
         nlu = "nix flake lock --update-input";
 
         # Modern yuunix, uwu <3
