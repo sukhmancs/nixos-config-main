@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     steam-run # Run commands in the same FHS environment
     nix-prefetch-git # Fetch source hashes for git repository
-    nix-inspect # inspect nix configs
+    nix-inspect.packages.default # inspect nix configs
     heimdall
     mono
     bleachbit # A program to free up disk space

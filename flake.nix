@@ -104,6 +104,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "nixpkgs";
     };
+
+    # nix-inspect to inspect nixos-configs
+    nix-inspect = {
+      url = "github:bluskript/nix-inspect";
+    };
   };
 
   outputs = inputs @ {
@@ -125,6 +130,7 @@
     hypridle,
     hyprspace,
     plasma-manager,
+    nix-inspect,
     ...
   }:
   # Function telling flake which inputs to use
@@ -140,7 +146,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager vars; # Inherit inputs
+        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager nix-inspect vars; # Inherit inputs
       }
     );
 

@@ -36,7 +36,7 @@
 
           # ETC.
           c = "clear";
-          f = "${pkgs.yazi-unwrapped}/bin/yazi";
+          f = "${pkgs.yazi}/bin/yazi";
           la = "ls -la";
           ll = "ls -l";
           n = "${pkgs.nitch}/bin/nitch";
