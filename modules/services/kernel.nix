@@ -6,7 +6,7 @@
 }:
 with host; let
   cfg = config.security;
-  inherit (lib) mkIf optionals concatLists;
+  inherit (lib) mkIf mkEnableOption optionals concatLists;
 in {
   options.security = {
     fixWebcam = mkEnableOption "Fix the purposefully broken webcam by un-blacklisting the related kernel module.";
