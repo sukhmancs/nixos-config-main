@@ -182,7 +182,7 @@ in {
           "firewire-core"
         ]
 
-        (optionals (!cfg.security.fixWebcam) [
+        (optionals (!cfg.fixWebcam) [
           "uvcvideo" # this is why your webcam no worky
         ])
       ];

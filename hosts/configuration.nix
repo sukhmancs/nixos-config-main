@@ -170,6 +170,9 @@ in {
   # setup selinux - this will automatically disable apparmor
   selinux.enable = false;
 
+  # fixwebcam
+  security.fixWebcam = false;
+
   hardware.pulseaudio.enable = false;
   services = {
     printing = {
