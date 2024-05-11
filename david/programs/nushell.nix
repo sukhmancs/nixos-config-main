@@ -1,3 +1,6 @@
+#
+# NuShell - a better alternative to zsh/bash
+#
 {
   pkgs,
   vars,

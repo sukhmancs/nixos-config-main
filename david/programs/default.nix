@@ -2,7 +2,7 @@
   ./firefox.nix
   ./chromium_policies.nix
   ./vscode.nix
-  # ./firejail.nix
+  ./firejail.nix
   # ./nix-ld.nix
   ./packages.nix
   ./nix_index.nix
@@ -20,6 +20,7 @@
   ./vesktop.nix
   ./nushell.nix
   ./starship.nix
+  ./izrss.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]

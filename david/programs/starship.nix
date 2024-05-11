@@ -1,3 +1,6 @@
+#
+# Completions for NuShell
+#
 {
   vars,
   catppuccin,
