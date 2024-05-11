@@ -50,8 +50,8 @@ in {
   users.users.${vars.user} = {
     isNormalUser = true;
     extraGroups = ["wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner"];
-  shell = pkgs.nushell;
-};
+    shell = pkgs.nushell;
+  };
 
   time.timeZone = "America/Toronto";
   i18n = {
@@ -156,6 +156,12 @@ in {
 
   programs = {
     dconf.enable = true;
+  };
+
+  # enable tailscale
+  modules.tailscale = {
+    enable = false;
+    isClient = true;
   };
 
   hardware.pulseaudio.enable = false;
