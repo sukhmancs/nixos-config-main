@@ -4,12 +4,13 @@
   ...
 }: {
   home-manager.users.${vars.user} = {
-    imports = [
-      catppuccin.homeManagerModules.catppuccin
-    ];
+    # imports = [
+    #   catppuccin.homeManagerModules.catppuccin
+    # ];
+    # catppuccin.flavour = "mocha";
     programs.starship = {
       enable = true;
-      catppuccin.enable = true;
+      # catppuccin.enable = true;
       enableNushellIntegration = true;
 
       settings = {

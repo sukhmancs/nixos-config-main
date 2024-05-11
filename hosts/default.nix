@@ -79,6 +79,7 @@ in {
     };
     modules = [
       nixvim.nixosModules.nixvim
+      catppuccin.nixosModules.catppuccin
       ./work
       ./configuration.nix
 

@@ -125,7 +125,7 @@
           }
 
           # source /home/${vars.user}/.config/nushell/extra.nu
-          kitten icat --align left $HOME/.config/kitty/kitty.gif
+          kitten icat --align left /home/${vars.user}/.config/kitty/kitty.gif
         '';
       };
     };
