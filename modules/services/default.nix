@@ -22,4 +22,5 @@
   ./tailscale.nix
   ./optimise.nix
   ./blocker.nix
+  ./ssh.nix
 ]

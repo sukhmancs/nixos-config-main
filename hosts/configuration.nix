@@ -181,13 +181,13 @@ in {
       pulse.enable = true;
       jack.enable = true;
     };
-    openssh = {
-      enable = true;
-      allowSFTP = true;
-      extraConfig = ''
-        HostKeyAlgorithms +ssh-rsa
-      '';
-    };
+    # openssh = {
+    #   enable = true;
+    #   allowSFTP = true;
+    #   extraConfig = ''
+    #     HostKeyAlgorithms +ssh-rsa
+    #   '';
+    # };
   };
 
   flatpak.enable = true;
