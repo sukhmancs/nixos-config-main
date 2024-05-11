@@ -19,4 +19,5 @@
   ./swaync.nix
   ./sxhkd.nix
   ./udiskie.nix
+  ./tailscale.nix
 ]
