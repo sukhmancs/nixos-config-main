@@ -21,4 +21,5 @@
   ./udiskie.nix
   ./tailscale.nix
   ./optimise.nix
+  ./blocker.nix
 ]
