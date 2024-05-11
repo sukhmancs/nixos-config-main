@@ -21,6 +21,7 @@
   ./nushell.nix
   ./starship.nix
   ./izrss.nix
+  ./xdg.nix
   # ./apparmor.nix
   # ./opensnitch.nix
 ]
