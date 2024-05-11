@@ -164,6 +164,9 @@ in {
     isClient = true;
   };
 
+  # harden Tcp
+  optimizeTcp = true;
+
   hardware.pulseaudio.enable = false;
   services = {
     printing = {
