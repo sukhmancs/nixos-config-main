@@ -20,4 +20,5 @@
   ./sxhkd.nix
   ./udiskie.nix
   ./tailscale.nix
+  ./optimise.nix
 ]

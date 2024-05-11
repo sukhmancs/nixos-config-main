@@ -3,10 +3,13 @@
   lib,
   ...
 }: let
-  sys = config.modules.system;
-  inherit (lib) mkIf;
+  inherit (lib) mkIf mkEnableOption;
+
+  cfg = config.optimizeTcp;
 in {
-  config = mkIf sys.networking.optimizeTcp {
+  options.optimizeTcp = mkEnableOption "Enable tcp optimizations";
+
+  config = mkIf cfg {
     boot = {
       kernelModules = ["tls" "tcp_bbr"];
       kernel.sysctl = {
