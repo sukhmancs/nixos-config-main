@@ -26,4 +26,5 @@
   ./tcpcrypt.nix
   ./apparmor.nix
   ./selinux.nix
+  ./kernel.nix
 ]
