@@ -107,7 +107,10 @@
 
     # catppuccin for starship
     catppuccin = {
-      url = "github:catppuccin/nix";
+      # url = "github:catppuccin/nix";
+      # ToDo: workaround for this issues (https://github.com/catppuccin/nix/issues/154)
+      # Remove it once home-manager get any new update
+      url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
     };
   };
 
