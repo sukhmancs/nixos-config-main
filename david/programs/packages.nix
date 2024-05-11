@@ -1,5 +1,9 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+{
+  pkgs,
+  unstable,
+  ...
+}: {
+  environment.systemPackages = with unstable; [
     steam-run # Run commands in the same FHS environment
     nix-prefetch-git # Fetch source hashes for git repository
     heimdall
@@ -34,6 +38,8 @@
     vesktop # alternative to Discord with Vencord built-in
     exercism
     git-extras # Provides useful commands like git-summary
+    charm-freeze # take screenshots of code
+    nix-inspect # inspect nix configs
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
