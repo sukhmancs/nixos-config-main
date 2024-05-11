@@ -38,7 +38,6 @@ in {
 
       ethernet.macAddress = mkIf (hostName != "server") "random"; # causes server to be unreachable over SSH
 
-      enableIPv6 = true;
       dns = "none"; # dnscrypt-proxy2 will handle dns
       plugins = with pkgs; [
         networkmanager-openvpn
