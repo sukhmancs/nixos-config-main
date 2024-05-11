@@ -23,4 +23,5 @@
   ./optimise.nix
   ./blocker.nix
   ./ssh.nix
+  ./tcpcrypt.nix
 ]
