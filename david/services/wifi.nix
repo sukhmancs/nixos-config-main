@@ -1,6 +1,13 @@
 # Wifi - Setup Network manager with dnscrypt-proxy client. I have also configured fail to ban
 #
-{pkgs, ...}: {
+{
+  pkgs,
+  host,
+  ...
+}:
+with host; let
+  inherit (lib) mkIf;
+in {
   # enable wireless database, it helps keeping wifi speedy
   hardware.wirelessRegulatoryDatabase = true;
 
@@ -11,6 +18,16 @@
     # If using NetworkManager:
     networkmanager = {
       enable = true;
+      unmanaged = [
+        "interface-name:tailscale*"
+        "interface-name:br-*"
+        "interface-name:rndis*"
+        "interface-name:docker*"
+        "interface-name:virbr*"
+        "interface-name:vboxnet*"
+        "interface-name:waydroid*"
+        "type:bridge"
+      ];
       wifi = {
         backend = "iwd";
 
@@ -18,6 +35,10 @@
         powersave = true;
         scanRandMacAddress = true; # MAC address randomization of a Wi-Fi device during scanning
       };
+
+      ethernet.macAddress = mkIf (hostName != "server") "random"; # causes server to be unreachable over SSH
+
+      enableIPv6 = true;
       dns = "none"; # dnscrypt-proxy2 will handle dns
       plugins = with pkgs; [
         networkmanager-openvpn
