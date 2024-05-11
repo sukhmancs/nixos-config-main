@@ -29,4 +29,5 @@
   ./kernel.nix
   ./pam.nix
   ./sudo.nix
+  ./virtualization.nix
 ]
