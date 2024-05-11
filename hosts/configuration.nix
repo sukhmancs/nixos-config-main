@@ -69,7 +69,6 @@ in {
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    sudo.wheelNeedsPassword = false;
   };
 
   fonts.packages = with pkgs; [

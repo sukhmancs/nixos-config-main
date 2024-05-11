@@ -28,4 +28,5 @@
   ./selinux.nix
   ./kernel.nix
   ./pam.nix
+  ./sudo.nix
 ]
