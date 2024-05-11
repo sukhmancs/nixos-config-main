@@ -59,6 +59,9 @@
           SpotifyControls.enabled = true;
           UrbanDictionary.enabled = true;
           ValidUser.enabled = true;
+          MessageClickActions.enabled = true;
+          InvisibleChat.enabled = true;
+          SilentTyping.enabled = true;
           WebContextMenus = {
             enabled = true;
             addBack = true;
