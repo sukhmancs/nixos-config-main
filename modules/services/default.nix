@@ -24,4 +24,6 @@
   ./blocker.nix
   ./ssh.nix
   ./tcpcrypt.nix
+  ./apparmor.nix
+  ./selinux.nix
 ]

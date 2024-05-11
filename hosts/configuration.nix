@@ -167,6 +167,9 @@ in {
   # harden Tcp
   optimizeTcp = true;
 
+  # setup selinux - this will automatically disable apparmor
+  selinux.enable = false;
+
   hardware.pulseaudio.enable = false;
   services = {
     printing = {
