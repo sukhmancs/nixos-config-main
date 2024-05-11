@@ -11,8 +11,14 @@
     # If using NetworkManager:
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
-      dns = "none";
+      wifi = {
+        backend = "iwd";
+
+        # macAddress = "random"; # use a random mac address on every boot, this can scew with static ip
+        powersave = true;
+        scanRandMacAddress = true; # MAC address randomization of a Wi-Fi device during scanning
+      };
+      dns = "none"; # dnscrypt-proxy2 will handle dns
       plugins = with pkgs; [
         networkmanager-openvpn
         networkmanager-openconnect
