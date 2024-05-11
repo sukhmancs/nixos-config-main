@@ -112,6 +112,11 @@
       # Remove it once home-manager get any new update
       url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
     };
+
+    # terminal rss feed reader
+    izrss = {
+      url = "github:isabelroses/izrss";
+    };
   };
 
   outputs = inputs @ {
@@ -134,6 +139,7 @@
     hyprspace,
     plasma-manager,
     catppuccin,
+    izrss,
     ...
   }:
   # Function telling flake which inputs to use
@@ -149,7 +155,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager catppuccin vars; # Inherit inputs
+        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager catppuccin izrss vars; # Inherit inputs
       }
     );
 
