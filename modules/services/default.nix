@@ -27,4 +27,5 @@
   ./apparmor.nix
   ./selinux.nix
   ./kernel.nix
+  ./pam.nix
 ]
