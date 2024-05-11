@@ -8,6 +8,7 @@
     # If using NetworkManager:
     networkmanager = {
       enable = true;
+      wifi.backend = "iwd";
       dns = "none";
       plugins = with pkgs; [
         networkmanager-openvpn
