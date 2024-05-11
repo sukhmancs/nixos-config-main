@@ -9,7 +9,6 @@
         themeLinks = [
           "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
           "https://catppuccin.github.io/discord/dist/catppuccin-mocha-pink.theme.css"
-          "https://raw.githubusercontent.com/puckzxz/NotAnotherAnimeTheme/master/NotAnotherAnimeTheme.theme.css"
         ];
         enabledThemes = [
         ];
