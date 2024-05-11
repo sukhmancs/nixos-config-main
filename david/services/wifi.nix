@@ -1,6 +1,9 @@
 # Wifi - Setup Network manager with dnscrypt-proxy client. I have also configured fail to ban
 #
 {pkgs, ...}: {
+  # enable wireless database, it helps keeping wifi speedy
+  hardware.wirelessRegulatoryDatabase = true;
+
   networking = {
     nameservers = ["127.0.0.1" "::1"];
     # If using dhcpcd:
