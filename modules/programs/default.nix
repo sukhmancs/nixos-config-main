@@ -20,5 +20,6 @@
   ./waybar.nix
   ./wofi.nix
   ./kdeconnect.nix
+  ./nh.nix
   # ./games.nix
 ]
