@@ -20,7 +20,6 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nh.url = "github:viperML/nh";
 
     # Unstable User Environment Manager
     home-manager-unstable = {
@@ -32,6 +31,25 @@
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    # nixos on wsl
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "";
+        flake-utils.follows = "izvim/flake-utils";
+      };
+    };
+
+    # Secrets, shhh
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
     # NUR Community Packages
