@@ -30,4 +30,5 @@
   ./pam.nix
   ./sudo.nix
   ./virtualization.nix
+  ./networkmanager.nix
 ]
