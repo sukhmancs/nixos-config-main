@@ -1,6 +1,3 @@
-#
-# Yet another nix helper
-#
 {
   programs.nh = {
     enable = true;

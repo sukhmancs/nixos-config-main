@@ -150,6 +150,7 @@ in {
       ++ (with unstable; [
         # Apps
         # firefox # Browser
+        nh # yet another nix cli helper
       ]);
   };
 

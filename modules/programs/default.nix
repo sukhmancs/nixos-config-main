@@ -20,6 +20,6 @@
   ./waybar.nix
   ./wofi.nix
   ./kdeconnect.nix
-  ./nh.nix
+  # ./nh.nix # this is only available on nixos-unstable
   # ./games.nix
 ]

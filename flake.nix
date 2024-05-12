@@ -20,6 +20,7 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nh.url = "github:viperML/nh";
 
     # Unstable User Environment Manager
     home-manager-unstable = {
