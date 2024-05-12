@@ -30,7 +30,7 @@ in {
         "type:bridge"
       ];
       wifi = {
-        backend = "iwd";
+        backend = "wpa_supplicant"; # "iwd";
 
         # macAddress = "random"; # use a random mac address on every boot, this can scew with static ip
         powersave = true;
