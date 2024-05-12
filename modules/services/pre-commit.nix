@@ -3,62 +3,60 @@
 #
 {
   lib,
-  inputs,
+  pre-commit-hooks,
+  # inputs,
+  config,
   ...
-}: {
-  imports = [inputs.pre-commit-hooks.flakeModule];
+}: let
+  # don't format these
+  excludes = ["flake.lock" "r'.+\.age$'"];
 
-  perSystem = {config, ...}: let
-    # don't format these
-    excludes = ["flake.lock" "r'.+\.age$'"];
+  mkHook = name: {
+    inherit excludes;
+    enable = true;
+    description = "pre commit hook for ${name}";
+    fail_fast = true;
+    verbose = true;
+  };
 
-    mkHook = name: {
+  mkHook' = name: prev: (mkHook name) // prev;
+in {
+  pre-commit = {
+    check.enable = true;
+
+    settings = {
       inherit excludes;
-      enable = true;
-      description = "pre commit hook for ${name}";
-      fail_fast = true;
-      verbose = true;
-    };
 
-    mkHook' = name: prev: (mkHook name) // prev;
-  in {
-    pre-commit = {
-      check.enable = true;
+      hooks = {
+        alejandra = mkHook "Alejandra";
+        actionlint = mkHook "actionlint";
+        # commitizen = mkHook "commitizen";
+        # nil = mkHook "nil";
 
-      settings = {
-        inherit excludes;
+        prettier = mkHook' "prettier" {
+          settings.write = true;
+        };
 
-        hooks = {
-          alejandra = mkHook "Alejandra";
-          actionlint = mkHook "actionlint";
-          # commitizen = mkHook "commitizen";
-          # nil = mkHook "nil";
-
-          prettier = mkHook' "prettier" {
-            settings.write = true;
+        typos = mkHook' "typos" {
+          settings = {
+            write = true;
+            configuration = ''
+              [default.extend-words]
+              "ags" = "ags"
+              "GIR" = "GIR"
+              "flate" = "flate"
+              "fo" = "fo"
+            '';
           };
+        };
 
-          typos = mkHook' "typos" {
-            settings = {
-              write = true;
-              configuration = ''
-                [default.extend-words]
-                "ags" = "ags"
-                "GIR" = "GIR"
-                "flate" = "flate"
-                "fo" = "fo"
-              '';
-            };
-          };
+        editorconfig-checker = mkHook' "editorconfig" {
+          enable = lib.mkForce false;
+          always_run = true;
+        };
 
-          editorconfig-checker = mkHook' "editorconfig" {
-            enable = lib.mkForce false;
-            always_run = true;
-          };
-
-          treefmt = mkHook' "treefmt" {
-            package = config.treefmt.build.wrapper;
-          };
+        treefmt = mkHook' "treefmt" {
+          package = config.treefmt.build.wrapper;
         };
       };
     };

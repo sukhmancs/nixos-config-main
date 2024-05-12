@@ -189,6 +189,7 @@
     plasma-manager,
     catppuccin,
     izrss,
+    pre-commit-hooks,
     ...
   }:
   # Function telling flake which inputs to use
@@ -204,7 +205,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager catppuccin izrss vars; # Inherit inputs
+        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager catppuccin izrss pre-commit-hooks vars; # Inherit inputs
       }
     );
 

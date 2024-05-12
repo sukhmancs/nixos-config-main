@@ -36,5 +36,6 @@
   ./psd.nix
   ./polkit_service.nix
   ./distrobox.nix
-  # ./pre-commit.nix
+  ./pre-commit.nix
+  ./formatter.nix
 ]
