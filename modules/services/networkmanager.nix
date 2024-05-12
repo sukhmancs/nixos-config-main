@@ -3,6 +3,7 @@
 {
   pkgs,
   host,
+  lib,
   ...
 }:
 with host; let

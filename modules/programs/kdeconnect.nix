@@ -2,10 +2,11 @@
   lib,
   config,
   host,
+  vars,
   ...
 }:
 with host; let
-  inherit (lib) mkOption types;
+  inherit (lib) mkIf mkOption types;
   cfg = config.modules.programs;
 in {
   options.modules.programs = {
@@ -25,8 +26,12 @@ in {
     };
   };
 
-  services.kdeconnect = lib.mkIf cfg.kdeconnect {
-    enable = true;
-    indicator = cfg.indicator;
+  config = mkIf cfg.kdeconnect {
+    home-manager.users.${vars.user} = {
+      services.kdeconnect = {
+        enable = true;
+        indicator = cfg.indicator;
+      };
+    };
   };
 }
