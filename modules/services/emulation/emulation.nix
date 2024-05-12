@@ -1,5 +1,8 @@
 #
-# Emulation
+# Emulation - run binary compiled for AArch64 (ARM architechture) or i686 (x86) in specific version of qemu
+# For example, run some binary through command line: ./somebinary
+# the kernal will automatically detect the emulator for it and launch the qemu.
+#
 {
   config,
   pkgs,
