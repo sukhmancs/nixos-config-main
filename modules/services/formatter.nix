@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  formatter = config.treefmt.build.wrapper;
+  # formatter = config.treefmt.build.wrapper;
 
   treefmt = {
     projectRootFile = "flake.nix";

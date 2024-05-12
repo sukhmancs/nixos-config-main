@@ -64,6 +64,12 @@
       };
     };
 
+    # a tree-wide formatter
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # NUR Community Packages
     nur = {
       url = "github:nix-community/NUR";
