@@ -24,13 +24,13 @@ in {
         8080
       ];
       allowedUDPPorts = [];
-      allowedTCPPortRanges = mkIf programs.kdeconnect.enable [
+      allowedTCPPortRanges = mkIf programs.kdeconnect [
         {
           from = 1714;
           to = 1764;
         }
       ];
-      allowedUDPPortRanges = mkIf programs.kdeconnect.enable [
+      allowedUDPPortRanges = mkIf programs.kdeconnect [
         {
           from = 1714;
           to = 1764;
