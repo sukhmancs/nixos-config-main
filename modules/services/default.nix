@@ -34,4 +34,5 @@
   ./networkmanager.nix
   ./psd.nix
   ./polkit_service.nix
+  ./distrobox.nix
 ]
