@@ -1,17 +1,71 @@
+#
+# pre-commit-hooks for nix
+#
 let
-  nix-pre-commit-hooks = import (builtins.fetchTarball "https://github.com/cachix/pre-commit-hooks.nix/tarball/master");
+  nix-pre-commit-hooks = import (builtins.fetchTarball {
+    url = "https://github.com/cachix/pre-commit-hooks.nix/tarball/master";
+    sha256 = "sha256:0ag90l0hrkhm02mkmm8yf3fnjjawv99czc7bp0szzgknps0xrzxb";
+  });
+  # don't format these
+  # excludes = ["flake.lock" "r'.+\.age$'"];
 in {
-  # Configured with the module options defined in `modules/pre-commit.nix`:
   pre-commit-check = nix-pre-commit-hooks.run {
     src = ./.;
-    # If your hooks are intrusive, avoid running on each commit with a default_states like this:
-    # default_stages = ["manual" "push"];
+    # settings = {
+    #   inherit excludes;
+    #
     hooks = {
-      elm-format.enable = true;
-
-      # override a package with a different version
-      ormolu.enable = true;
-      ormolu.settings.defaultExtensions = ["lhs" "hs"];
+      alejandra = {
+        enable = true;
+        description = "pre commit hook for Alejandra";
+        fail_fast = true;
+        verbose = true;
+      };
+      actionlint = {
+        enable = true;
+        description = "pre commit hook for actionlint";
+        fail_fast = true;
+        verbose = true;
+      };
+      prettier = {
+        enable = true;
+        description = "pre commit hook for prettier";
+        fail_fast = true;
+        verbose = true;
+        settings = {
+          write = true;
+        };
+      };
+      typos = {
+        enable = true;
+        description = "pre commit hook for typos";
+        fail_fast = true;
+        verbose = true;
+        settings = {
+          write = true;
+          configuration = ''
+            [default.extend-words]
+            "ags" = "ags";
+            "GIR" = "GIR";
+            "flate" = "flate";
+            "fo" = "fo";
+          '';
+        };
+      };
+      editorconfig-checker = {
+        enable = false; # Change to true if needed
+        description = "pre commit hook for editorconfig";
+        fail_fast = true;
+        verbose = true;
+        always_run = true;
+      };
+      # treefmt = {
+      #   enable = true;
+      #   description = "pre commit hook for treefmt";
+      #   fail_fast = true;
+      #   verbose = true;
+      #   package = inputs.treefmt.build.wrapper;
+      # };
     };
   };
 }

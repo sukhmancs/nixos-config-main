@@ -11,7 +11,8 @@
 #
 [
   ./firewall
-  ./emulation/emulation.nix
+  ./emulation
+  ./pre-commit
   ./avahi.nix
   # ./dunst.nix
   ./flameshot.nix
