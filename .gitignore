@@ -1,3 +1,4 @@
 result
 ./darwin/result
 **/.direnv
+/.pre-commit-config.yaml
