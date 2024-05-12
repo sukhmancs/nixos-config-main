@@ -26,6 +26,8 @@
   unstable,
   inputs,
   vars,
+  lib,
+  config,
   ...
 }: let
   terminal = pkgs.${vars.terminal};
@@ -204,7 +206,7 @@ in {
       warn-dirty = false;
     };
     gc = {
-      automatic = true;
+      automatic = true; #TODO: lib.mkForce (!config.programs.nh.clean.enable);
       dates = "weekly";
       options = "--delete-older-than 2d";
     };
