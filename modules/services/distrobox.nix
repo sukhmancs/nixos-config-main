@@ -4,6 +4,7 @@
 {
   lib,
   host,
+  pkgs,
   ...
 }:
 with host; let
@@ -14,7 +15,7 @@ in {
       distrobox
     ];
 
-    systemd.user = mkIf cfg.distrobox.enable {
+    systemd.user = {
       timers."distrobox-update" = {
         enable = true;
         wantedBy = ["timers.target"];
