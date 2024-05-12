@@ -65,7 +65,7 @@
     };
 
     # a tree-wide formatter
-    treefmt-nix = {
+    treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
