@@ -11,25 +11,29 @@ let
 in {
   pre-commit-check = nix-pre-commit-hooks.run {
     src = ./.;
-    # settings = {
-    #   inherit excludes;
-    #
+
     hooks = {
       alejandra = {
         enable = true;
         description = "pre commit hook for Alejandra";
-        fail_fast = true;
+        # don't format these
+        excludes = ["flake.lock" "r'.+\.age$'"];
         verbose = true;
+        fail_fast = true; # stop running hooks if this hook fails
       };
       actionlint = {
         enable = true;
         description = "pre commit hook for actionlint";
+        # don't format these
+        excludes = ["flake.lock" "r'.+\.age$'"];
         fail_fast = true;
         verbose = true;
       };
       prettier = {
         enable = true;
         description = "pre commit hook for prettier";
+        # don't format these
+        excludes = ["flake.lock" "r'.+\.age$'"];
         fail_fast = true;
         verbose = true;
         settings = {
@@ -39,22 +43,26 @@ in {
       typos = {
         enable = true;
         description = "pre commit hook for typos";
+        # don't format these
+        excludes = ["flake.lock" "r'.+\.age$'"];
         fail_fast = true;
         verbose = true;
         settings = {
           write = true;
           configuration = ''
             [default.extend-words]
-            "ags" = "ags";
-            "GIR" = "GIR";
-            "flate" = "flate";
-            "fo" = "fo";
+            "ags" = "ags"
+            "GIR" = "GIR"
+            "flate" = "flate"
+            "fo" = "fo"
           '';
         };
       };
       editorconfig-checker = {
         enable = false; # Change to true if needed
         description = "pre commit hook for editorconfig";
+        # don't format these
+        excludes = ["flake.lock" "r'.+\.age$'"];
         fail_fast = true;
         verbose = true;
         always_run = true;
@@ -62,9 +70,15 @@ in {
       # treefmt = {
       #   enable = true;
       #   description = "pre commit hook for treefmt";
+      #   # don't format these
+      #   excludes = ["flake.lock" "r'.+\.age$'"];
       #   fail_fast = true;
       #   verbose = true;
-      #   package = inputs.treefmt.build.wrapper;
+      #   # package = pkgs.treefmt;
+      #   settings.formatters = [
+      #     pkgs.nixpkgs-fmt
+      #     pkgs.black
+      #   ];
       # };
     };
   };
