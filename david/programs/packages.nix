@@ -40,6 +40,7 @@
     git-extras # Provides useful commands like git-summary
     charm-freeze # take screenshots of code
     nix-inspect # inspect nix configs
+    devenv # nixos development shell
 
     #### System hardening
     #chkrootkit # Scan for any rootkits
