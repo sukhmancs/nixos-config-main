@@ -10,6 +10,7 @@
 #               └─ ...
 #
 [
+  ./firewall
   ./avahi.nix
   # ./dunst.nix
   ./flameshot.nix
