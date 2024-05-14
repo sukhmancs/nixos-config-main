@@ -180,6 +180,7 @@
     hyprspace,
     plasma-manager,
     catppuccin,
+    agenix,
     izrss,
     ...
   }:
@@ -196,7 +197,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager catppuccin izrss vars; # Inherit inputs
+        inherit inputs nixpkgs nixpkgs-unstable nixos-hardware home-manager nur nixvim-flake nixvim doom-emacs hyprland hyprlock hypridle hyprspace plasma-manager catppuccin izrss agenix vars; # Inherit inputs
       }
     );
 

@@ -16,15 +16,13 @@
 #           └─ ./work
 #               └─ default.nix
 #
-
-{ pkgs, ... }:
-
-{
-  imports = [ ./hardware-configuration.nix ] ++
-    (import ../../modules/desktops/virtualisation) ++
-    (import ../../modules/hardware/work) ++
-    (import ../../david/programs) ++
-    (import ../../david/services);
+{pkgs, ...}: {
+  imports =
+    [./hardware-configuration.nix]
+    ++ (import ../../modules/desktops/virtualisation)
+    ++ (import ../../modules/hardware/work)
+    ++ (import ../../david/programs)
+    ++ (import ../../david/services);
 
   boot = {
     loader = {
@@ -34,10 +32,10 @@
       };
       grub = {
         enable = true;
-        devices = [ "nodev" ];
+        devices = ["nodev"];
         efiSupport = true;
         useOSProber = true;
-        configurationLimit = 2;
+        configurationLimit = 5;
         default = 2;
         theme = pkgs.stdenv.mkDerivation {
           pname = "Grub-Themes";
@@ -70,7 +68,7 @@
     };
     sane = {
       enable = true;
-      extraBackends = [ pkgs.sane-airscan ];
+      extraBackends = [pkgs.sane-airscan];
     };
   };
 

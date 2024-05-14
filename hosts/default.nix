@@ -22,6 +22,7 @@
   hypridle,
   hyprspace,
   plasma-manager,
+  agenix,
   catppuccin,
   izrss,
   vars,
@@ -70,7 +71,7 @@ in {
   work = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system unstable hyprland hyprlock hypridle hyprspace catppuccin izrss vars;
+      inherit inputs system unstable hyprland hyprlock hypridle hyprspace catppuccin izrss agenix vars;
       host = {
         hostName = "work";
         mainMonitor = "eDP-1";
@@ -83,6 +84,7 @@ in {
       catppuccin.nixosModules.catppuccin
       ./work
       ./configuration.nix
+      agenix.nixosModules.default
 
       home-manager.nixosModules.home-manager
       {

@@ -27,6 +27,7 @@
   inputs,
   vars,
   lib,
+  agenix,
   config,
   ...
 }: let
@@ -144,6 +145,9 @@ in {
         unrar # Rar Files
         wpsoffice # Office
         zip # Zip
+
+        # secrets
+        agenix.packages.x86_64-linux.default
 
         # Other Packages Found @
         # - ./<host>/default.nix
